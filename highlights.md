@@ -3,7 +3,7 @@
 These are features/facts/tips/tricks in iOS Dev that I came across during the 100 days and found interesting. They act as a "cheat sheet" for me to reference later. 
 
 ## Multiline String
-```swift
+```dart
 var str = """
 Hello \
 Hello 
