@@ -745,5 +745,156 @@ Also for that same reason, it’s faster to use `str.isEmpty` rather than `str.c
 
 \
 Check these two articles for more info about emojis and strings in Swift:
+
 - [Why are strings structs in Swift?](https://www.hackingwithswift.com/quick-start/understanding-swift/why-are-strings-structs-in-swift)
 - [Why using isEmpty is faster than checking count == 0](https://www.hackingwithswift.com/articles/181/why-using-isempty-is-faster-than-checking-count-0)
+
+# \# Day 9
+
+## Structs with both custom and default initializers
+
+Structs have a default memberwise initializer. If we were to define our own custom initializer, the default memberwise one would be removed.
+
+```swift
+struct Person {
+    var name: String
+    init() {
+        self.name = "anonymous"
+    }
+}
+
+let person1 = Person()                  // No issues
+let person2 = Person(name: "Taylor")    // Error
+```
+
+We can keep both by defining our custom initializer as an extension
+
+```swift
+struct Person {
+    var name: String
+}
+
+extension Person {
+    init() {
+        self.name = "anonymous"
+    }
+}
+
+let person1 = Person()                  // No issues
+let person2 = Person(name: "Taylor")    // Also no issues :)
+```
+
+## `lazy` Properties
+
+Structs can have properties created only when they're accessed for the first time. This can be helpful if a property is not always needed and is expensive to create.
+
+```swift
+struct ExpensiveStruct {
+    init() {
+        // some expensive work here
+        print("ExpensiveStruct instance created!")
+    }
+}
+
+
+struct MyStruct {
+    lazy var expensiveInstance = ExpensiveStruct()
+    init() {
+        print("MyStruct instance created!")
+    }
+}
+
+
+var myInstance = MyStruct()
+myInstance.expensiveInstance
+```
+
+Output:
+
+```
+MyStruct instance created!
+ExpensiveStruct instance created!
+```
+
+> Note: We can only use lazy properties on variable struct instances as they have to modify the instance to initialize the property.
+
+## Accessing `self` with `lazy` properties initialization
+
+`lazy` properties are initialized only when needed, which means they are initialized after their containing struct instance is initailaized, which means we can access `self` in there initialization closure. This can be helpful if a property depends on the values of other properties.
+
+```swift
+struct MyStruct {
+    let value: Int
+
+    lazy var lazyValue = {
+        let newValue = self.value + 1
+        print("Property (lazyValue) created!")
+        return newValue
+    }()
+
+    init(_ value: Int) {
+        self.value = value
+        print("MyStruct instance created!")
+    }
+}
+
+
+var myInstance = MyStruct(5)
+print(myInstance.lazyValue)
+```
+
+> Note: initialization closure should have the calling parentheses `()` at the end of it. Otherwise, the property would be initialized with the closue itself rather than its return value.
+
+## `static` methods & properties with structs vs enums
+
+Static methods and properties are available without creating needing an instance. They're useful for grouping related and frequently used values and functionalities without polluting the namespace.
+
+We can use a struct to group static members as well as enums. Difference being that enums without any cases can't have instances and hence would totally prevent us from creating an pointless instance.
+
+```swift
+enum Randomizer {
+    private static var entropy = Int.random(in: 1...1000)
+
+    static func nextInt() -> Int {
+        entropy += 1
+        return entropy
+    }
+}
+
+Randomizer.nextInt()  // Generates a random number
+Randomizer.nextInt()  // Increments it by 1 with every call
+```
+
+We can achieve the same functionality with structs too by making an empty private initializer. I prefer this approach to using an `enum` as I think it's better to leave enums for "enumeration" purposes.
+
+```swift
+struct Randomizer {
+    private static var entropy = Int.random(in: 1...1000)
+
+    static func nextInt() -> Int {
+        entropy += 1
+        return entropy
+    }
+
+    private init() {}
+}
+
+Randomizer.nextInt()  // Generates a random number
+Randomizer.nextInt()  // Increments it by 1 with every call
+Randomizer()          // Error: 'Randomizer' initializer is inaccessible due to 'private' protection level
+```
+
+## Structs with `private` members don't have default memberwise initializers
+
+It's probably better to be explicit about which members to expose in the initializer's parameter list and which to keep private when using there's private properties. Swift designers seem to agree.
+
+```swift
+struct MyStruct {
+    var member1: Int
+    var member2: Int
+    private var member3 = 0
+}
+
+
+let instance = MyStruct()    // Error: 'MyStruct' initializer is inaccessible due to 'private' protection level
+```
