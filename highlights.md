@@ -3,9 +3,10 @@
 These are features/facts/tips/tricks in iOS Dev that I came across during the 100 days and found interesting. They act as a "cheat sheet" for me to reference later. 
 
 ## Multiline String
-
 ```swift
-var str = """hello"""
+1;2o320rsafpke
+"""hello"""
+var str = "hello"
 print(str)
 ```
 
