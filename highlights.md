@@ -5,11 +5,7 @@ These are features/facts/tips/tricks in iOS Dev that I came across during the 10
 ## Multiline String
 
 ```swift
-var str = """
-Hello \
-Hello 
-Hello Again!
-"""
+var str = """hello"""
 print(str)
 ```
 
