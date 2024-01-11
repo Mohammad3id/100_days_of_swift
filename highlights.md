@@ -3,66 +3,117 @@
 These are features/facts/tips/tricks in iOS Dev that I came across during the 100 days and found interesting. They act as a "cheat sheet" for me to reference later. 
 
 ## Multiline String
-`
+
+```swift
 var str = """
 Hello \
 Hello 
 Hello Again!
 """
-`
+print(str)
+```
 
-Output: "Hello Hello \n Hello Again"
+Output:
 
-Note: add a backslash at the end of a line to cancel its line break
+```
+Hello Hello
+Hello Again
+```
+
+>Note: add a backslash at the end of a line to cancel its line break
 
 
 
-Custom String Interpolation
+## Custom String Interpolation
 
-You can make custom string interpolations techniques for formatting values cleanly 
+You can make custom string interpolations techniques for formatting values cleanly
+
+```swift
 let age = 22
 var str = "Hi, I'm \(format: age, using: .spellOut)."
-Output: "Hi, I'm twenty-two."
+print(str)
+```
 
-Check out this article to learn more about it.
-Super-powered string interpolation in Swift 5.0 – Hacking with Swift
+Output:
+
+```
+Hi, I'm twenty-two.
+```
+
+Check out this [article](https://www.hackingwithswift.com/articles/178/super-powered-string-interpolation-in-swift-5-0) to learn more about it.
 
 
 
-Object-Like Tuples
+## Object-Like Tuples
 
 Tuples in Swift are kinda like an on-the-fly object. Each member of the tuple can have a label and be accessed by that label much like how a property is accessed in an object.
+
+```swift
 let person = (name: "Jack", age: 23)
-person.name
-Output: "Jack"
+print(person.name)
+```
+
+Output:
+
+```
+Jack
+```
+
+---
 
 Members can also be accessed using their numerical position.
+```swift
 let person = (name: "Jack", age: 23)
-person.0
-Output: "Jack"
+print(person.0)
+```
+
+Output:
+
+```
+Jack
+```
+
+---
 
 Not all members need to be labeled though. Members without a label can still be accessed by their numerical position.
+
+```swift
 let person = ("Jack", age: 23)
-person.0
-Output: "Jack"
+print(person.0)
+```
+
+Output:
+
+```
+Jack
+```
 
 
 
-Default Values for Dictionaries
+## Default Values for Dictionaries
 
+```swift
 let favoriteIceCream = [
     "Paul": "Chocolate",
     "Sophie": "Vanilla"
 ]
 
-favoriteIceCream["Charlotte", default: "Unknown"]
-Output: "Unknown"
+print(favoriteIceCream["Charlotte", default: "Unknown"])
+```
+
+Output:
+
+```
+Unknown
+``` 
 
 
 
-Associated Values in Enums
+## Associated Values in Enums
 
 Each enum member in Swift can have its own associated values. Here’s an example of how to use it:
+
+```swift
 enum Weather: Equatable {
     case sunny
     case windy(speed: Int)
@@ -74,30 +125,48 @@ let weather = Weather.rainy(chance: 5, amount: 10)
 if case .rainy(chance: 5, amount: let amount) = weather {
     "Rainy with chance of specifically five percent and amount of \(amount)"
 }
-Output: "Rainy with chance of specifically five percent and amount of 10"
+```
+
+Output: 
+
+```
+Rainy with chance of specifically five percent and amount of 10
+```
 
 
 
-Doubles lose precision with higher numbers
+## Doubles lose precision with higher numbers
 
 This has to do with the way doubles are represented in memory. Swift will even warn us if we tried to store a big value
-let value: Double = 90000000000000001
-Warning: '90000000000000001' is not exactly representable as 'Double'; it becomes '90000000000000000'
+
+```swift
+let value: Double = 90000000000000001  // Warning: '90000000000000001' is not exactly representable as 'Double'; it becomes '90000000000000000'
+```
 
 
 
-isMultiple(of:) Method
+## isMultiple(of:) Method
 
 A cleaner way to check if a number is divisible by some other number
+
+```swift
 let number = 84
 number.isMultiple(of: 7)    //same as: number % 7 == 0
-Output: true
+```
+
+Output: 
+
+```
+true
+```
 
 
 
-Comparable Enums
+## Comparable Enums
 
 Enums can conform Comparable protocol to be able to used in comparisons. Results are based on the order of appearance of enum members.
+
+```swift
 enum Sizes: Comparable {
     case small
     case medium
@@ -107,14 +176,22 @@ enum Sizes: Comparable {
 let first = Sizes.small
 let second = Sizes.large
 
-first < second
-Output: true
+print(first < second)
+```
+
+Output: 
+
+```
+true
+```
 
 
 
-Switch case “fallthrough”
+## Switch case “fallthrough”
  
 When running a case in a switch case statement, you can use “fallthrough” keyword to run the following case regardless of its condition.
+
+```swift
 for number in 0...5 {
     print("(number = \(number))")
 
@@ -137,7 +214,11 @@ for number in 0...5 {
     
     print()
 }
+```
+
 Output:
+
+```
 (number = 0)
 Case 0
 
@@ -158,13 +239,16 @@ Case 4
 
 (number = 5)
 Default Case
+```
 
 
 
-Range as a switch case value
+## Range as a switch case value
 
 You can use a range as a case value in a switch case statement.
-let score = 85
+
+```swift
+let score = 84
 
 switch score {
 case 0..<50:
@@ -174,24 +258,39 @@ case 50..<85:
 default:
     print("You did great!")
 }
-Output: You did great!
+```
+
+Output: 
+
+```
+You did OK.
+```
 
 
-
-Range with arrays
+## Range with arrays
 
 You can retrieve multiple elements (sub-array) from an array using ranges.
+
+```swift
 let names = ["Piper", "Alex", "Suzanne", "Gloria", "Taylor"]
 print(names[1...3])
-Output: ["Alex", "Suzanne", "Gloria"]
 print(names[1...])    // Elements from index 1 to the end of the array
-Output: ["Alex", "Suzanne", "Gloria", "Taylor"]
+```
+
+Output: 
+
+```
+["Alex", "Suzanne", "Gloria"]
+["Alex", "Suzanne", "Gloria", "Taylor"]
+```
 
 
 
-Loops can be labeled
+## Loops can be labeled
 
 In situations where we need to break an outer loop from an inner loop, we can label the outer loop we wanna break and use that label with the break statement.
+
+```swift
 outerLoop: 
 for i in 1...4 {
     for j in 1...4 {
@@ -204,7 +303,12 @@ for i in 1...4 {
         }
     }
 }
-Output:1 * 1 is 1
+```
+
+Output:
+
+```
+1 * 1 is 1
 1 * 2 is 2
 1 * 3 is 3
 1 * 4 is 4
@@ -212,12 +316,15 @@ Output:1 * 1 is 1
 2 * 2 is 4
 2 * 3 is 6
 Done!
+```
 
 
 
-Functions with a single expression return it automatically 
+## Functions with a single expression return it automatically 
 
 If a function contains a single expression, it returns that expression automatically. This behaviour is used heavily in SwiftUI. The following two functions behave the same:
+
+```swift
 func doMath() -> Int {
     return 5 + 5
 }
@@ -225,12 +332,13 @@ func doMath() -> Int {
 func doMoreMath() -> Int {
     5 + 5
 }
+```
 
 
 
+## An if-else can be used as an expression
 
-An if-else can be used as an expression
-
+```swift
 let food = "Apple"
 
 let response = if food == "Apple" {
@@ -240,9 +348,17 @@ let response = if food == "Apple" {
 }
 
 print(response)
-Output: I love apples!
+```
+
+Output: 
+
+```
+I love apples!
+```
 
 This feature works well with functions when returning a single expression
+
+```swift
 func giveDog(food: String) -> String {
     if food == "treat" {
         "The dog ate it"
@@ -252,7 +368,13 @@ func giveDog(food: String) -> String {
 }
 
 giveDog(food: "treat")
-Output: The dog ate it
+```
+
+Output: 
+
+```
+The dog ate it
+```
 
 
 
