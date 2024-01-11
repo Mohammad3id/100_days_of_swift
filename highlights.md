@@ -6,7 +6,7 @@ These are features/facts/tips/tricks in iOS Dev that I came across during the 10
 
 ## Multiline String
 
-> There is a bug in swift multiline string literals syntax highlighting on github so don't wory if the string is highlighted with a red color, it's valid swift code.
+> There is a bug in Swift multiline string literals syntax highlighting on github so don't wory if the string is highlighted with a red color, it's valid Swift code.
 
 ```swift
 var str = """
@@ -61,8 +61,7 @@ Output:
 Jack
 ```
 
----
-
+\
 Members can also be accessed using their numerical position.
 
 ```swift
@@ -76,8 +75,7 @@ Output:
 Jack
 ```
 
----
-
+\
 Not all members need to be labeled though. Members without a label can still be accessed by their numerical position.
 
 ```swift
@@ -99,7 +97,8 @@ let favoriteIceCream = [
     "Sophie": "Vanilla"
 ]
 
-print(favoriteIceCream["Charlotte", default: "Unknown"])
+let fav = favoriteIceCream["Charlotte", default: "Unknown"]
+print(fav)
 ```
 
 Output:
@@ -122,14 +121,14 @@ enum Weather: Equatable {
 let weather = Weather.rainy(chance: 5, amount: 10)
 
 if case .rainy(chance: 5, amount: let amount) = weather {
-    "Rainy with chance of specifically five percent and amount of \(amount)"
+    "Rainy with a chance of specifically five percent and amount of \(amount)"
 }
 ```
 
 Output:
 
 ```
-Rainy with chance of specifically five percent and amount of 10
+Rainy with a chance of specifically five percent and amount of 10
 ```
 
 # \# Day 3
@@ -324,7 +323,7 @@ func doMoreMath() -> Int {
 }
 ```
 
-## An `if-else` can be used as an expression
+## An `if-else` block can be used as an expression
 
 ```swift
 let food = "Apple"
@@ -402,7 +401,7 @@ Variadic functions take any arbitrary number of arguments of the same type. Inte
 
 ```swift
 func sum(_ numbers: Int..., power: Int = 1) -> Int {
-var sumResult = 0
+    var sumResult = 0
 
     for number in numbers {
         sumResult += number
@@ -489,7 +488,7 @@ We can allow a function to change the value of an argument that is being passed 
 
 ```swift
 func doubleInPlace(_ number: inout Int) {
-    number \*= 2
+    number *= 2
 }
 
 var number = 1
@@ -503,7 +502,7 @@ Output:
 2
 ```
 
-> Note: the passed value must be variable, not a constant. Also it should be marked with an & symbol to make sure we’re aware of the possibility of its change.
+> Note: the passed `inout` argument must be variable, not a constant. Also it should be marked with an `&` symbol to make sure we’re aware of the possibility of its change.
 
 # \# Day 6
 
@@ -580,7 +579,7 @@ Output:
 120
 ```
 
-Here we used the reduce method to multiply a sequence of numbers from 1 to 5. We used a closure that accepts two integers and multiply the “accumulator” and the “newValue” together, starting with an accumulator of 1. Notice that the closure signature is the same as the multiply operation `*`, which means we can use it directly as a closure to achieve the same result.
+Here we used the reduce method to multiply a sequence of numbers from 1 to 5. We used a closure that accepts two integers and multiply the “accumulator” and the “newValue” together, starting with an accumulator of 1. Notice that the closure's signature is the same as that of the multiply operation `*`, which means we can use it directly as a closure to achieve the same result.
 
 ```swift
 let factorial = (1...5).reduce(1, *)
@@ -737,9 +736,9 @@ Output:
 \
 Since characters don’t necessarily take the same size of bytes in memory, we can’t use indexing syntax with strings to get a certain character.
 
-```
+```swift
 var strWithEmoji = "123🙎🏻‍♂️56"
-print(strWithEmoji[4]) // Error
+let fourthChar = strWithEmoji[4]     // Error
 ```
 
 Also for that same reason, it’s faster to use `str.isEmpty` rather than `str.count == 0`
