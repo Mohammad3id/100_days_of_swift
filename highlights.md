@@ -898,3 +898,56 @@ struct MyStruct {
 
 let instance = MyStruct()    // Error: 'MyStruct' initializer is inaccessible due to 'private' protection level
 ```
+
+# \# Day 10
+
+## Structs vs Classes
+
+- A Class can inherit from other classes. Structs can't inherit from other structs.
+- Classes don't have a default memberwise initializer. This is because memberwise initializers would cause [problems](https://www.hackingwithswift.com/quick-start/understanding-swift/why-dont-swift-classes-have-a-memberwise-initializer) when used with inheritence.
+- Struct instances are passed by value, while class instances are passed by reference.
+- Classes have deinitializers, structs don't.
+- Variable properties in constant classe instances can be modified. This also means that class methods that change properties don't need to be marked as `mutating`.
+
+## `final` Classes
+
+Classes can be marked as `final` which means they can't be inherited from. Something to keep in mind.
+
+## Struct instances can be observed for changes
+
+We can add observers on the whole instance of a struct to observe any state changes.
+
+```swift
+struct Point {
+    var x: Int
+    var y: Int
+}
+
+var point = Point(x: 1, y: 2) {
+    willSet {
+        print(newValue.x, newValue.y)
+    }
+}
+
+point.x = 2
+```
+
+Output:
+
+```
+2 2
+```
+
+
+Check this [article](https://chris.eidhof.nl/post/structs-and-mutation-in-swift/) about structs and mutation in Swift. It discusses some interesting ideas.
+
+## API Design Guidlines
+
+Swift's documentation has a list of conventions & best practices for designing our APIs. Check it out [here](https://www.swift.org/documentation/api-design-guidelines/).
+
+## Automatic Reference Counting (ARC)
+
+Swift tracks how many identifiers are referencing a class instance with a reference count. When that number goes to zero, the deinitializer code is executed and the instanc is destroyed. 
+
+>This behavior doesn't exist with struct instances cause it's not really needed since they act like normal values and are passed by value. Class instances however, they can be referenced by multiple identifiers since they're passed by reference, and hence it's hard to pinpoint when they will be destroyed.
+
