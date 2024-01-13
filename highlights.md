@@ -938,7 +938,6 @@ Output:
 2 2
 ```
 
-
 Check this [article](https://chris.eidhof.nl/post/structs-and-mutation-in-swift/) about structs and mutation in Swift. It discusses some interesting ideas.
 
 ## API Design Guidlines
@@ -947,9 +946,9 @@ Swift's documentation has a list of conventions & best practices for designing o
 
 ## Automatic Reference Counting (ARC)
 
-Swift tracks how many identifiers are referencing a class instance with a reference count. When that count goes to zero, the deinitializer code is executed and the instance is destroyed. 
+Swift tracks how many identifiers are referencing a class instance with a reference count. When that count goes to zero, the deinitializer code is executed and the instance is destroyed.
 
->This behavior doesn't exist with struct instances cause it's not really needed since they act like normal values and are passed by value. Class instances however, they can be referenced by multiple identifiers since they're passed by reference, and hence it's hard to pinpoint when they will be destroyed, which makes deinitializers very helpful.
+> This behavior doesn't exist with struct instances cause it's not really needed since they act like normal values and are passed by value. Class instances however, they can be referenced by multiple identifiers since they're passed by reference, and hence it's hard to pinpoint when they will be destroyed, which makes deinitializers very helpful.
 
 # \# Day 11
 
@@ -1010,7 +1009,7 @@ We can make a struct conform to a protocol with an extension. That way, we can g
 
 ```swift
 protocol Identifiable {
-    var id: String {get set}
+    var id: String { get set }
     func identify()
 }
 
