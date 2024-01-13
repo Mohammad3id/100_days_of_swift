@@ -976,7 +976,7 @@ protocol SeniorEmployee: Payable, HasVacation { }
 
 ## Protocol extensions for default method implementations
 
-We can make an extension to protocols and provide a default implementation of protocol methods in their.
+We can make an extension to protocols and provide a default implementation of protocol methods in there.
 
 ```swift
 protocol Identifiable {
@@ -1004,9 +1004,9 @@ Output:
 My ID is 12345.
 ```
 
-## Group protocol-conforming struct method implementations in an extension
+## Make a struct conform to a protocol with an extension
 
-In a struct that conforms to some protocol, we can implement the protocol methods in an extension of that struct.
+We can make a struct conform to a protocol with an extension. That way, we can group protocol method implementations in a separate place from the main struct itself.
 
 ```swift
 protocol Identifiable {
@@ -1035,6 +1035,6 @@ Output:
 My name is Taylor ID is 12345
 ```
 
-> Note: Extensions can't have stored properties. They can only have computed properties and method implementations.
+> Note: Extensions can't have stored properties. They can only have computed properties and method implementations. That's why the `id` property is defined in the struct body and not in the extension.
 
 Check out this [article](https://www.swiftbysundell.com/articles/conditional-conformances-in-swift/) to learn about "Conditional Conformance".
