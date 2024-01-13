@@ -938,7 +938,6 @@ Output:
 2 2
 ```
 
-
 Check this [article](https://chris.eidhof.nl/post/structs-and-mutation-in-swift/) about structs and mutation in Swift. It discusses some interesting ideas.
 
 ## API Design Guidlines
@@ -947,7 +946,94 @@ Swift's documentation has a list of conventions & best practices for designing o
 
 ## Automatic Reference Counting (ARC)
 
-Swift tracks how many identifiers are referencing a class instance with a reference count. When that count goes to zero, the deinitializer code is executed and the instance is destroyed. 
+Swift tracks how many identifiers are referencing a class instance with a reference count. When that count goes to zero, the deinitializer code is executed and the instance is destroyed.
 
->This behavior doesn't exist with struct instances cause it's not really needed since they act like normal values and are passed by value. Class instances however, they can be referenced by multiple identifiers since they're passed by reference, and hence it's hard to pinpoint when they will be destroyed, which makes deinitializers very helpful.
+> This behavior doesn't exist with struct instances cause it's not really needed since they act like normal values and are passed by value. Class instances however, they can be referenced by multiple identifiers since they're passed by reference, and hence it's hard to pinpoint when they will be destroyed, which makes deinitializers very helpful.
 
+# \# Day 11
+
+## Composing protocols from other protocols
+
+Protocols can be composed from other protocols which makes things a lot more reusable.
+
+```swift
+protocol Payable {
+    func calculateWages() -> Int
+}
+
+protocol NeedsTraining {
+    func study()
+}
+
+protocol HasVacation {
+    func takeVacation(days: Int)
+}
+
+protocol JuniorEmployee: Payable, NeedsTraining { }
+protocol SeniorEmployee: Payable, HasVacation { }
+```
+
+## Protocol extensions for default method implementations
+
+We can make an extension to protocols and provide a default implementation of protocol methods in there.
+
+```swift
+protocol Identifiable {
+    var id: String {get set}
+    func identify()
+}
+
+extension Identifiable {
+    func identify() {
+        print("My ID is \(id).")
+    }
+}
+
+struct User: Identifiable {
+    var id: String
+}
+
+let myUser = User(id: "12345")
+myUser.identify()
+```
+
+Output:
+
+```
+My ID is 12345.
+```
+
+## Make a struct conform to a protocol with an extension
+
+We can make a struct conform to a protocol with an extension. That way, we can group protocol method implementations in a separate place from the main struct itself.
+
+```swift
+protocol Identifiable {
+    var id: String { get set }
+    func identify()
+}
+
+struct User {
+    var id: String
+    var name: String
+}
+
+extension User: Identifiable {
+    func identify() {
+        print("My name is \(name) ID is \(id)")
+    }
+}
+
+let myUser = User(id: "12345", name: "Taylor")
+myUser.identify()
+```
+
+Output:
+
+```
+My name is Taylor ID is 12345
+```
+
+> Note: Extensions can't have stored properties. They can only have computed properties and method implementations. That's why the `id` property is defined in the struct body and not in the extension.
+
+Check out this [article](https://www.swiftbysundell.com/articles/conditional-conformances-in-swift/) to learn about "Conditional Conformance".
