@@ -2,7 +2,7 @@
 
 These are features/facts/tips/tricks in iOS Dev that I came across during the 100 days and found interesting. They act as a "cheat sheet" for me to reference later.
 
->Disclaimer: Some of these code snippets are my own and some others are copied from HackingWithSwift.com articles. All deserved credibility & appreciation goes to the author for his incredible work.
+> Disclaimer: Some of these code snippets are my own and some others are copied from HackingWithSwift.com articles. All deserved credibility & appreciation goes to the author for his incredible work.
 
 # \# Day 1
 
@@ -480,9 +480,13 @@ try numbers.map { number in    // have to use try, closure may throw an error
 
 Check our this [article](https://www.donnywals.com/working-with-throwing-functions-in-swift/) for more info about error handling in functions and “throws” and “rethrows” keywords.
 
-## Why surrounding a throwing function calls with a `do-catch` block isn’t enforced
+## Calling throwing function
 
-Functions should be able to propagate errors to its caller if that’s the needed behaviour. Enforcing a do-catch whenever calling a throwing function won’t allow us to handle the errors anywhere we want.
+Functions marked as `throws` can call the throwing functions without `try` only and without any further handling to let the error propagate to its caller. Non-throwing functions on the other hand, should do one of the following:
+
+- Use a `do-catch` block to handle the error
+- Use `try?` when calling throwing functions which makes them return `nil` in case of errors
+- Use `try!` to ignore the possibility of an error being thrown, but that's usually not recommended.
 
 ## Function “inout” parameter
 
@@ -1120,8 +1124,7 @@ Output:
 true
 ```
 
->Note: Being implicitly unwrapped means that these values literally gets 'implicitly unwrapped' as if we have put `!` after them. It depends on where we pass these values. Try passing an implicitly unwrapped value to a function with aparameter of type `Any` (like `print()` for example), the value won't be unwrapped as the parameter can accept optional values with no issues.
-
+> Note: Being implicitly unwrapped means that these values literally gets 'implicitly unwrapped' as if we have put `!` after them. It depends on where we pass these values. Try passing an implicitly unwrapped value to a function with aparameter of type `Any` (like `print()` for example), the value won't be unwrapped as the parameter can accept optional values with no issues.
 
 ## Failable Initializers
 
@@ -1182,6 +1185,7 @@ for person in people {
 ```
 
 Output:
+
 ```
 I'm a customer, with id 12345
 I'm an employee, earning $50000
