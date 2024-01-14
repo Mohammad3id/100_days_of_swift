@@ -1124,7 +1124,7 @@ Output:
 true
 ```
 
-> Note: Being implicitly unwrapped means that these values literally gets 'implicitly unwrapped' as if we have put `!` after them. It depends on where we pass these values. Try passing an implicitly unwrapped value to a function with aparameter of type `Any` (like `print()` for example), the value won't be unwrapped as the parameter can accept optional values with no issues.
+> Note: Being implicitly unwrapped means that these values literally gets 'implicitly unwrapped' whenever they're used (as if we have put `!` after them). It depends on where we pass these values. Try passing an implicitly unwrapped value to a function with aparameter of type `Any` (like `print()` for example), the value won't be unwrapped as the parameter can accept optional values with no issues.
 
 ## Failable Initializers
 
