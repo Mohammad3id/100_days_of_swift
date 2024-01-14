@@ -2,6 +2,8 @@
 
 These are features/facts/tips/tricks in iOS Dev that I came across during the 100 days and found interesting. They act as a "cheat sheet" for me to reference later.
 
+> Disclaimer: Some of these code snippets are my own and some others are copied from HackingWithSwift.com articles. All deserved credibility & appreciation goes to the author for his incredible work.
+
 # \# Day 1
 
 ## Multiline String
@@ -478,9 +480,13 @@ try numbers.map { number in    // have to use try, closure may throw an error
 
 Check our this [article](https://www.donnywals.com/working-with-throwing-functions-in-swift/) for more info about error handling in functions and “throws” and “rethrows” keywords.
 
-## Why surrounding a throwing function calls with a `do-catch` block isn’t enforced
+## Calling throwing function
 
-Functions should be able to propagate errors to its caller if that’s the needed behaviour. Enforcing a do-catch whenever calling a throwing function won’t allow us to handle the errors anywhere we want.
+Functions marked as `throws` can call the throwing functions without `try` only and without any further handling to let the error propagate to its caller. Non-throwing functions on the other hand, should do one of the following:
+
+- Use a `do-catch` block to handle the error
+- Use `try?` when calling throwing functions which makes them return `nil` in case of errors
+- Use `try!` to ignore the possibility of an error being thrown, but that's usually not recommended.
 
 ## Function “inout” parameter
 
@@ -1037,3 +1043,150 @@ My name is Taylor ID is 12345
 > Note: Extensions can't have stored properties. They can only have computed properties and method implementations. That's why the `id` property is defined in the struct body and not in the extension.
 
 Check out this [article](https://www.swiftbysundell.com/articles/conditional-conformances-in-swift/) to learn about "Conditional Conformance".
+
+# \# Day 12
+
+## Optinals unwrapping with `if let` syntax
+
+Swift null safety prevent us from accessing optional (possible `nil`) values directly to prevent errors. We need to unwrap optional values first, and one of the ways it's done by is `if let` syntax. Consider the following variable of type 'optional string':
+
+```swift
+var optionalStr: String? = nil
+```
+
+We can unwrap it to safely use the string if it exits, or do something else if it doesn't, using `if let` syntax:
+
+```swift
+if let unwrappedStr = optionalStr {
+    print("String length: \(unwrappedStr.count)")
+} else {
+    print("String is nil and can't be accessed")
+}
+```
+
+Or even more concisely:
+
+```swift
+if let optionalStr {
+    print("String length: \(optionalStr.count)")
+} else {
+    print("String is nil and can't be accessed")
+}
+```
+
+Output:
+
+```
+String is nil and can't be accessed
+```
+
+## Optinals unwrapping with `guard let` syntax
+
+This syntax is very useful when we're checking if some value is `nil` at the beginning of some scope (e.g, function, loop, etc.) before continuing the execution. It "guards" the rest of the scope from `nil` values as if it finds an optional value to be `nil` it requires us to exit the scope (with `return`, `throw`, `continue`, etc).
+
+```swift
+func greet(_ name: String?) {
+    guard let name else {
+        print("You didn't provide a name")
+        return
+    }
+
+    print("Hello, \(name)!")
+}
+
+greet(nil)
+greet("Taylor")
+```
+
+Output:
+
+```
+You didn't provide a name
+Hello, Taylor!
+```
+
+## Implicitly unwrapped optionals
+
+Sometimes we have a value that would start with `nil` and gets initialized before we start using it. Kinda like `late` properties in dart. These values can be marked as implicitly unwrapped optionals so that we don't have to deal with the possibility of `nil` everywhere we wanna use them since we're sure they will be initialized by that time.
+
+```swift
+var age: Int! = nil
+
+// After some time
+age = 33
+
+print(age.isMultiple(of: 3))
+```
+
+Output:
+
+```
+true
+```
+
+> Note: Being implicitly unwrapped means that these values literally gets 'implicitly unwrapped' whenever they're used (as if we have put `!` after them). It depends on where we pass these values. Try passing an implicitly unwrapped value to a function with aparameter of type `Any` (like `print()` for example), the value won't be unwrapped as the parameter can accept optional values with no issues.
+
+## Failable Initializers
+
+We can make an initializer that might fail and return `nil`. We just have to use `init?()` instead of `init()` and the return type will become an optional of struct/class type.
+
+```swift
+class Person {
+    var id: String
+
+    init?(id: String) {
+        if id.count == 9 {
+            self.id = id
+        } else {
+            return nil
+        }
+    }
+}
+
+let person = Person(id: "123")
+
+print(person?.id)
+```
+
+Output:
+
+```
+nil
+```
+
+## Type casting as optional
+
+We can cast a value to another type using `as?` which would return a `nil` in case of failing.
+
+```swift
+class Person {
+    var name = "Anonymous"
+}
+
+class Customer: Person {
+    var id = 12345
+}
+
+class Employee: Person {
+    var salary = 50_000
+}
+
+let customer = Customer()
+let employee = Employee()
+let people = [customer, employee]  //  An array of Person(s)
+
+for person in people {
+    if let customer = person as? Customer {
+        print("I'm a customer, with id \(customer.id)")
+    } else if let employee = person as? Employee {
+        print("I'm an employee, earning $\(employee.salary)")
+    }
+}
+```
+
+Output:
+
+```
+I'm a customer, with id 12345
+I'm an employee, earning $50000
+```
