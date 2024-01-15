@@ -202,6 +202,7 @@ for number in 0...5 {
         print("Case 3")
     case 4:
         print("Case 4")
+        fallthrough
     default:
         print("Default Case")
     }
@@ -230,6 +231,7 @@ Case 3
 
 (number = 4)
 Case 4
+Default Case
 
 (number = 5)
 Default Case
