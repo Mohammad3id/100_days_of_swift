@@ -420,15 +420,8 @@ func sum(_ numbers: Int..., power: Int = 1) -> Int {
 
 }
 
-sum(5, 2, 1)            // 5 + 2 + 1
-sum(5, 2, 1, power: 3)  // (5 + 2 + 1) ^ 3
-```
-
-Output:
-
-```swift
-8
-512
+sum(5, 2, 1)            // 5 + 2 + 1         = 8
+sum(5, 2, 1, power: 3)  // (5 + 2 + 1) ^ 3   = 512
 ```
 
 ## Function `throws`
