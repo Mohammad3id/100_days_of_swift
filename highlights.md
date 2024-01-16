@@ -827,7 +827,7 @@ ExpensiveStruct instance created!
 
 ## Accessing `self` with `lazy` properties initialization
 
-`lazy` properties are initialized only when needed, which means they are initialized after their containing struct instance is initailaized, which means we can access `self` in there initialization closure. This can be helpful if a property depends on the values of other properties.
+`lazy` properties are initialized only when needed, which means they are initialized after their containing struct instance is initailaized, which means we can access `self` in their initialization closure. This can be helpful if a property depends on the values of other properties.
 
 ```swift
 struct MyStruct {
