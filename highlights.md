@@ -1252,3 +1252,10 @@ Who's there?
 Who's there?
 Orange
 ```
+
+
+## Copy on write in structs
+
+Swift uses a technique called "copy on write" when making copies of struct instances. It means that when we assign an existing struct instance to a new variable (make a copy of it), Swift doesn't actually make a copy of the instance until we try to change its data, hence the name "copy on write".
+
+
