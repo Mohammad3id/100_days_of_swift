@@ -702,7 +702,7 @@ Struct instances assigned to constants (using “let”) are immutable. Normal m
 ```swift
 
 struct Counter {
-var value = 0
+    var value = 0
 
     func printValue() {
         print("Current value: \(value)")
@@ -712,7 +712,6 @@ var value = 0
         print("incremented!")
         value += 1
     }
-
 }
 
 var counter = Counter(value: 5)
