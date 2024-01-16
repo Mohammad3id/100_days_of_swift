@@ -1193,6 +1193,10 @@ I'm a customer, with id 12345
 I'm an employee, earning $50000
 ```
 
+# \# Day 13
+
+No highlights for today
+
 # \# Day 14
 
 ## Pattern matching with `switch-case` and `enum` associated values
@@ -1259,3 +1263,6 @@ Orange
 Swift uses a technique called "copy on write" when making copies of struct instances. It means that when we assign an existing struct instance to a new variable (make a copy of it), Swift doesn't actually make a copy of the instance until we try to change its data, hence the name "copy on write".
 
 
+## Working with Objective-C code
+
+Apple operating systems are mostly built with Objective-C, so to make some of our Swift code available to use by the OS we need to use the `@objc` mark with our code.
