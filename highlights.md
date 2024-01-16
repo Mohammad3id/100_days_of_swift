@@ -1197,7 +1197,7 @@ I'm an employee, earning $50000
 
 ## Pattern matching with `switch-case` and `enum` associated values
 
-We can use `where` keyword with `switch-case` to match a specific case of an enum's associated value. 
+We can use `where` keyword with `switch-case` to match a specific case of an enum's associated value.
 
 ```swift
 enum WeatherType {
@@ -1224,3 +1224,31 @@ func getHaterStatus(weather: WeatherType) -> String? {
 getHaterStatus(weather: WeatherType.wind(speed: 5)) // meh
 ```
 
+## Optionals are enums with associated values
+
+Swift optionals are actually enums with two cases: `.none` and `.some`, where `.some` is the case of an existing value.
+
+```swift
+func knockKnock(_ caller: String?) {
+    print("Who's there?")
+
+    switch caller {
+    case .none:
+        print("* silence *")
+    case let .some(person):
+        print(person)
+    }
+}
+
+knockKnock(nil)
+knockKnock("Orange")
+```
+
+Output:
+
+```
+Who's there?
+* silence *
+Who's there?
+Orange
+```
