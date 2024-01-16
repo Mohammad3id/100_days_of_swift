@@ -575,7 +575,7 @@ Operators under the hood are actually functions. Hence, they can be passed to ot
 
 ```swift
 let factorial = (1...5).reduce(1) { (accumulator, newValue) in
-    result *= newValue
+    accumulator * newValue
 }
 
 print(factorial)
