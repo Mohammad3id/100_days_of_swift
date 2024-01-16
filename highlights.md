@@ -575,7 +575,7 @@ Operators under the hood are actually functions. Hence, they can be passed to ot
 
 ```swift
 let factorial = (1...5).reduce(1) { (accumulator, newValue) in
-    result *= newValue
+    accumulator * newValue
 }
 
 print(factorial)
@@ -702,7 +702,7 @@ Struct instances assigned to constants (using “let”) are immutable. Normal m
 ```swift
 
 struct Counter {
-var value = 0
+    var value = 0
 
     func printValue() {
         print("Current value: \(value)")
@@ -712,7 +712,6 @@ var value = 0
         print("incremented!")
         value += 1
     }
-
 }
 
 var counter = Counter(value: 5)
@@ -828,7 +827,7 @@ ExpensiveStruct instance created!
 
 ## Accessing `self` with `lazy` properties initialization
 
-`lazy` properties are initialized only when needed, which means they are initialized after their containing struct instance is initailaized, which means we can access `self` in there initialization closure. This can be helpful if a property depends on the values of other properties.
+`lazy` properties are initialized only when needed, which means they are initialized after their containing struct instance is initailaized, which means we can access `self` in their initialization closure. This can be helpful if a property depends on the values of other properties.
 
 ```swift
 struct MyStruct {
@@ -1192,3 +1191,77 @@ Output:
 I'm a customer, with id 12345
 I'm an employee, earning $50000
 ```
+
+# \# Day 13
+
+No highlights for today
+
+# \# Day 14
+
+## Pattern matching with `switch-case` and `enum` associated values
+
+We can use `where` keyword with `switch-case` to match a specific case of an enum's associated value.
+
+```swift
+enum WeatherType {
+    case sun
+    case cloud
+    case rain
+    case wind(speed: Int)
+    case snow
+}
+
+func getHaterStatus(weather: WeatherType) -> String? {
+    switch weather {
+    case .sun:
+        return nil
+    case .wind(let speed) where speed < 10:  // Focus on this syntax
+        return "meh"
+    case .cloud, .wind:
+        return "dislike"
+    case .rain, .snow:
+        return "hate"
+    }
+}
+
+getHaterStatus(weather: WeatherType.wind(speed: 5)) // meh
+```
+
+## Optionals are enums with associated values
+
+Swift optionals are actually enums with two cases: `.none` and `.some`, where `.some` is the case of an existing value.
+
+```swift
+func knockKnock(_ caller: String?) {
+    print("Who's there?")
+
+    switch caller {
+    case .none:
+        print("* silence *")
+    case let .some(person):
+        print(person)
+    }
+}
+
+knockKnock(nil)
+knockKnock("Orange")
+```
+
+Output:
+
+```
+Who's there?
+* silence *
+Who's there?
+Orange
+```
+
+
+## Copy on write in structs
+
+Swift uses a technique called "copy on write" when making copies of struct instances. It means that when we assign an existing struct instance to a new variable (i.e, make a copy of it), Swift doesn't actually make a copy of the instance until we try to change its data, hence the name "copy on write".
+
+
+## Working with Objective-C code
+
+Apple operating systems are mostly built with Objective-C, so to make some of our Swift code available to use by the OS we need to use the `@objc` mark with our code.
