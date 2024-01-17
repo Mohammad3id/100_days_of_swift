@@ -1265,3 +1265,29 @@ Swift uses a technique called "copy on write" when making copies of struct insta
 ## Working with Objective-C code
 
 Apple operating systems are mostly built with Objective-C, so to make some of our Swift code available to use by the OS we need to use the `@objc` mark with our code.
+
+# \# Day 15
+
+## Properties with getter only
+
+If you use a computed property for reading only, you can omit the `get` keyword and closure.
+
+```swift
+struct Person {
+    var age: Int
+    
+    var ageInDogYears: Int {
+        age * 7
+    }
+}
+
+var fan = Person(age: 25)
+
+print(fan.ageInDogYears)
+
+```
+
+Output:
+```
+175
+```
