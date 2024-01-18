@@ -1256,11 +1256,9 @@ Who's there?
 Orange
 ```
 
-
 ## Copy on write in structs
 
 Swift uses a technique called "copy on write" when making copies of struct instances. It means that when we assign an existing struct instance to a new variable (i.e, make a copy of it), Swift doesn't actually make a copy of the instance until we try to change its data, hence the name "copy on write".
-
 
 ## Working with Objective-C code
 
@@ -1275,7 +1273,7 @@ If you use a computed property for reading only, you can omit the `get` keyword 
 ```swift
 struct Person {
     var age: Int
-    
+
     var ageInDogYears: Int {
         age * 7
     }
@@ -1288,6 +1286,29 @@ print(fan.ageInDogYears)
 ```
 
 Output:
+
 ```
 175
 ```
+
+# \# Day 16
+
+## View controller method overloading
+
+It's not the method name that reflect its functionality but rather its parameters. For example, in `UITableViewController`, we have two methods named `tableView` that we can override to specify our tableview behavior.
+
+```swift
+override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    return pictures.count
+}
+
+override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    let cell = tableView.dequeueReusableCell(withIdentifier: "Picture", for: indexPath)
+    cell.textLabel?.text = pictures[indexPath.row]
+    return cell
+}
+```
+
+What makes them different is their parameters (method overloading): 
+- The first on is used for specifying the number of rows in a given table section (which is indicated in its `numberOfRowsInSection` parameter label)
+- The other is used to build the cell to be viewed in a given row (which is indicated by its `cellForRowAt` parameter label).
