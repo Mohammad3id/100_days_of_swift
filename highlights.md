@@ -1295,7 +1295,7 @@ Output:
 
 ## View controller method overloading
 
-It's not the method name that reflect its functionality but rather its parameters. For example, in `UITableViewController`, we have two methods named `tableView` that we can override to specify our tableview behavior.
+In UIKit, it's not the method name that reflects its functionality but rather its parameters. For example, in `UITableViewController`, we have two methods named `tableView` that we can override to specify our tableview behavior.
 
 ```swift
 override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
