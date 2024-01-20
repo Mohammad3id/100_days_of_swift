@@ -22,8 +22,11 @@ class ViewController: UITableViewController {
                 pictures.append(item)
             }
         }
+        pictures.sort()
         
-        print(pictures)
+        title = "Storm Viewer"
+        
+        navigationController?.navigationBar.prefersLargeTitles = true
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -34,6 +37,14 @@ class ViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Picture", for: indexPath)
         cell.textLabel?.text = pictures[indexPath.row]
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let detailViewController = storyboard?.instantiateViewController(identifier: "Detail") as? DetailViewController {
+            detailViewController.selectedImage = pictures[indexPath.row]
+            detailViewController.title = "Picture \(indexPath.row + 1) of \(pictures.count)"
+            navigationController?.pushViewController(detailViewController, animated: true)
+        }
     }
 
 }
