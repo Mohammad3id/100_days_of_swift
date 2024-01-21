@@ -4,8 +4,6 @@ These are features/facts/tips/tricks in iOS Dev that I came across during the 10
 
 > Disclaimer: Some of these code snippets are my own and some others are copied from HackingWithSwift.com articles. All deserved credibility & appreciation goes to the author for his incredible work.
 
-# \# Day 1
-
 ## Multiline String
 
 > There is a bug in Swift multiline string literals syntax highlighting on github so don't wory if the string is highlighted with a red color, it's valid Swift code.
@@ -45,8 +43,6 @@ Hi, I'm twenty-two.
 ```
 
 Check out this [article](https://www.hackingwithswift.com/articles/178/super-powered-string-interpolation-in-swift-5-0) to learn more about it.
-
-# \# Day 2
 
 ## Object-Like Tuples
 
@@ -132,8 +128,6 @@ Output:
 ```
 Rainy with a chance of specifically five percent and amount of 10
 ```
-
-# \# Day 3
 
 ## Doubles lose precision with higher numbers
 
@@ -277,8 +271,6 @@ Output:
 ["Alex", "Suzanne", "Gloria", "Taylor"]
 ```
 
-# \# Day 4
-
 ## Loops can be labeled
 
 In situations where we need to break an outer loop from an inner loop, we can label the outer loop we wanna break and use that label with the break statement.
@@ -310,8 +302,6 @@ Output:
 2 * 3 is 6
 Done!
 ```
-
-# \# Day 5
 
 ## Functions with a single expression return it automatically
 
@@ -512,8 +502,6 @@ Output:
 
 > Note: the passed `inout` argument must be variable, not a constant. Also it should be marked with an `&` symbol to make sure we’re aware of the possibility of its change.
 
-# \# Day 6
-
 ## Closures can’t be called with parameter labels
 
 We can only call closures with positional arguments.
@@ -526,8 +514,6 @@ let play = { (game: String) in
 play("soccer")          // Output: I'm playing soccer
 play(game: "soccer")    // Error
 ```
-
-# \# Day 7
 
 ## Closure Shorthand Parameters
 
@@ -663,8 +649,6 @@ Output:
 \
 Check this [article](https://alisoftware.github.io/swift/closures/2016/07/25/closure-capture-1/) to know more about closure capturing.
 
-# \# Day 8
-
 ## Structs Observers
 
 You can run some code as a reaction to setting a property value. Use willSet to run code before setting the property value, or didSet to run code after setting the value.
@@ -755,8 +739,6 @@ Check these two articles for more info about emojis and strings in Swift:
 
 - [Why are strings structs in Swift?](https://www.hackingwithswift.com/quick-start/understanding-swift/why-are-strings-structs-in-swift)
 - [Why using isEmpty is faster than checking count == 0](https://www.hackingwithswift.com/articles/181/why-using-isempty-is-faster-than-checking-count-0)
-
-# \# Day 9
 
 ## Structs with both custom and default initializers
 
@@ -906,8 +888,6 @@ struct MyStruct {
 let instance = MyStruct()    // Error: 'MyStruct' initializer is inaccessible due to 'private' protection level
 ```
 
-# \# Day 10
-
 ## Structs vs Classes
 
 - A Class can inherit from other classes. Structs can't inherit from other structs.
@@ -956,8 +936,6 @@ Swift's documentation has a list of conventions & best practices for designing o
 Swift tracks how many identifiers are referencing a class instance with a reference count. When that count goes to zero, the deinitializer code is executed and the instance is destroyed.
 
 > This behavior doesn't exist with struct instances cause it's not really needed since they act like normal values and are passed by value. Class instances however, they can be referenced by multiple identifiers since they're passed by reference, and hence it's hard to pinpoint when they will be destroyed, which makes deinitializers very helpful.
-
-# \# Day 11
 
 ## Composing protocols from other protocols
 
@@ -1044,8 +1022,6 @@ My name is Taylor ID is 12345
 > Note: Extensions can't have stored properties. They can only have computed properties and method implementations. That's why the `id` property is defined in the struct body and not in the extension.
 
 Check out this [article](https://www.swiftbysundell.com/articles/conditional-conformances-in-swift/) to learn about "Conditional Conformance".
-
-# \# Day 12
 
 ## Optinals unwrapping with `if let` syntax
 
@@ -1192,12 +1168,6 @@ I'm a customer, with id 12345
 I'm an employee, earning $50000
 ```
 
-# \# Day 13
-
-No highlights for today
-
-# \# Day 14
-
 ## Pattern matching with `switch-case` and `enum` associated values
 
 We can use `where` keyword with `switch-case` to match a specific case of an enum's associated value.
@@ -1264,8 +1234,6 @@ Swift uses a technique called "copy on write" when making copies of struct insta
 
 Apple operating systems are mostly built with Objective-C, so to make some of our Swift code available to use by the OS we need to use the `@objc` mark with our code.
 
-# \# Day 15
-
 ## Properties with getter only
 
 If you use a computed property for reading only, you can omit the `get` keyword and closure.
@@ -1291,8 +1259,6 @@ Output:
 175
 ```
 
-# \# Day 16
-
 ## View controller method overloading
 
 In UIKit, it's not the method name that reflects its functionality but rather its parameters. For example, in `UITableViewController`, we have two methods named `tableView` that we can override to specify our tableview behavior.
@@ -1309,6 +1275,7 @@ override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexP
 }
 ```
 
-What makes them different is their parameters (method overloading): 
+What makes them different is their parameters (method overloading):
+
 - The first on is used for specifying the number of rows in a given table section (which is indicated in its `numberOfRowsInSection` parameter label)
 - The other is used to build the cell to be viewed in a given row (which is indicated by its `cellForRowAt` parameter label).
