@@ -1279,3 +1279,8 @@ What makes them different is their parameters (method overloading):
 
 - The first on is used for specifying the number of rows in a given table section (which is indicated in its `numberOfRowsInSection` parameter label)
 - The other is used to build the cell to be viewed in a given row (which is indicated by its `cellForRowAt` parameter label).
+
+
+## `@IBOutlet` and `@IBAction`
+
+Both are ways of connecting "Interface Builder" to code. The difference is that `@IBOutlet` allows our code to trigger interface changes, while `@IBAction` allows our interface to trigger some code.
