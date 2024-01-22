@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gjd-Hn-GOf">
-                                <rect key="frame" x="84.666666666666686" y="100" width="224" height="114"/>
+                                <rect key="frame" x="84.666666666666686" y="133" width="224" height="114"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="us"/>
                                 <connections>
@@ -25,7 +25,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EjV-6Z-r8D">
-                                <rect key="frame" x="84.666666666666686" y="244" width="224" height="114"/>
+                                <rect key="frame" x="84.666666666666686" y="277" width="224" height="114"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="us"/>
                                 <connections>
@@ -33,7 +33,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zBx-h2-Pvg">
-                                <rect key="frame" x="84.666666666666686" y="388" width="224" height="114"/>
+                                <rect key="frame" x="84.666666666666686" y="421" width="224" height="114"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="us"/>
                                 <connections>
@@ -49,7 +49,7 @@
                             <constraint firstItem="Gjd-Hn-GOf" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="UhF-kE-8Km"/>
                             <constraint firstItem="zBx-h2-Pvg" firstAttribute="top" secondItem="EjV-6Z-r8D" secondAttribute="bottom" constant="30" id="V4p-iO-Rjg"/>
                             <constraint firstItem="zBx-h2-Pvg" firstAttribute="centerX" secondItem="EjV-6Z-r8D" secondAttribute="centerX" id="YCv-2j-Ovt"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="top" secondItem="Gjd-Hn-GOf" secondAttribute="top" constant="3" id="zup-jb-9a8"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="top" secondItem="Gjd-Hn-GOf" secondAttribute="top" constant="-30" id="zup-jb-9a8"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="9r4-Bf-XRF"/>
