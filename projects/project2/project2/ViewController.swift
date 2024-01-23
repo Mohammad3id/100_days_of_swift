@@ -28,6 +28,8 @@ class ViewController: UIViewController {
         button1.layer.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.1).cgColor
         button2.layer.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.1).cgColor
         button3.layer.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.1).cgColor
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(showScore))
 
         askQuestion()
     }
@@ -75,5 +77,12 @@ class ViewController: UIViewController {
             self.askQuestion()
         })
         present(alertController, animated: true)
+    }
+    
+    @objc func showScore() {
+        let activityViewController = UIActivityViewController(activityItems: ["Score: \(score)"], applicationActivities: [])
+        activityViewController.popoverPresentationController?.barButtonItem = navigationItem.rightBarButtonItem
+        activityViewController.
+        present(activityViewController, animated: true)
     }
 }

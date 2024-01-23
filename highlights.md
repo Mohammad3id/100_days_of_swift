@@ -1284,3 +1284,11 @@ What makes them different is their parameters (method overloading):
 ## `@IBOutlet` and `@IBAction`
 
 Both are ways of connecting "Interface Builder" to code. The difference is that `@IBOutlet` allows our code to trigger interface changes, while `@IBAction` allows our interface to trigger some code.
+
+## `UIActivityViewController`
+
+This view controller can be used to implement sharing functionality in iOS apps.
+
+## `@IBAction` implies `@objc`
+
+Apparently the `@IBAction` automatically implies `@objc` as well since the method marked with `@IBAction` is supposed to be called by the system which is written in Objective-C
