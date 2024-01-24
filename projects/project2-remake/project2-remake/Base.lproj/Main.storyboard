@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="9xk-wy-vGU">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="project2_remake" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="210" placeholderIntrinsicHeight="110" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tr3-GP-q3i">
+                                <rect key="frame" x="91.666666666666686" y="153" width="210" height="110"/>
+                                <inset key="imageEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
+                                <state key="normal" image="france"/>
+                                <connections>
+                                    <action selector="onTap:" destination="BYZ-38-t0r" eventType="touchUpInside" id="azF-9J-wlu"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="1" contentMode="scaleToFill" placeholderIntrinsicWidth="210" placeholderIntrinsicHeight="110" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IpD-Xh-9Fh">
+                                <rect key="frame" x="91.666666666666686" y="313" width="210" height="110"/>
+                                <inset key="imageEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
+                                <state key="normal" image="italy"/>
+                                <connections>
+                                    <action selector="onTap:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Paz-dX-Xxq"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="2" contentMode="scaleToFill" placeholderIntrinsicWidth="210" placeholderIntrinsicHeight="110" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rlk-00-e7P">
+                                <rect key="frame" x="91.666666666666686" y="473" width="210" height="110"/>
+                                <inset key="imageEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
+                                <state key="normal" image="spain"/>
+                                <connections>
+                                    <action selector="onTap:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tx4-Qj-e7V"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Rlk-00-e7P" firstAttribute="top" secondItem="IpD-Xh-9Fh" secondAttribute="bottom" constant="50" id="ETg-Tn-fd5"/>
+                            <constraint firstItem="IpD-Xh-9Fh" firstAttribute="top" secondItem="tr3-GP-q3i" secondAttribute="bottom" constant="50" id="IcG-ph-eHz"/>
+                            <constraint firstItem="Rlk-00-e7P" firstAttribute="centerX" secondItem="IpD-Xh-9Fh" secondAttribute="centerX" id="R25-fQ-FEQ"/>
+                            <constraint firstItem="tr3-GP-q3i" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="bCF-1I-Wc5"/>
+                            <constraint firstItem="tr3-GP-q3i" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="50" id="gpE-F6-azD"/>
+                            <constraint firstItem="IpD-Xh-9Fh" firstAttribute="centerX" secondItem="tr3-GP-q3i" secondAttribute="centerX" id="jtT-nP-Wyq"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="0or-ea-LLW"/>
+                    <connections>
+                        <outlet property="button1" destination="tr3-GP-q3i" id="GbS-nY-UIZ"/>
+                        <outlet property="button2" destination="IpD-Xh-9Fh" id="2Qn-b5-3Gn"/>
+                        <outlet property="button3" destination="Rlk-00-e7P" id="E0g-hI-WWR"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1005.3435114503816" y="-27.464788732394368"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Vga-rt-LVf">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="9xk-wy-vGU" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="WP0-hg-vZp">
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="8CZ-45-wqY"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="d4R-Tc-Ghd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="78.625954198473281" y="-27.464788732394368"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="france" width="200" height="100"/>
+        <image name="italy" width="200" height="100"/>
+        <image name="spain" width="200" height="100"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
