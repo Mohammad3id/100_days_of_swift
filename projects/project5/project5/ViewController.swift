@@ -15,6 +15,7 @@ class ViewController: UITableViewController {
         super.viewDidLoad()
 
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(promptForAnswer))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(startGame))
 
         if let startWordsUrl = Bundle.main.url(forResource: "start", withExtension: "txt") {
             if let startWords = try? String(contentsOf: startWordsUrl) {
@@ -29,10 +30,15 @@ class ViewController: UITableViewController {
         startGame()
     }
 
-    func startGame() {
+    @objc func startGame() {
         title = allWords.randomElement()
+        
+        var indexPathes = [IndexPath]()
+        for i in 0..<usedWords.count {
+            indexPathes.append(IndexPath(row: i, section: 0))
+        }
         usedWords.removeAll(keepingCapacity: true)
-        tableView.reloadData()
+        tableView.deleteRows(at: indexPathes, with: .automatic)
     }
 
     @objc func promptForAnswer() {
@@ -55,10 +61,17 @@ class ViewController: UITableViewController {
         var errorTitle: String?
         var errorMessage: String?
         
-        if !isPossible(word: lowerAnswer) {
+        if !isNew(word: lowerAnswer) {
+            guard let title = title?.lowercased() else { return }
+            errorTitle = "Word isn't new"
+            errorMessage = "Come up with your own words!"
+        } else if !isPossible(word: lowerAnswer) {
             guard let title = title?.lowercased() else { return }
             errorTitle = "Word not possible"
             errorMessage = "You can't spell that word from \(title)"
+        } else if !isLongEnough(word: lowerAnswer) {
+            errorTitle = "Word too short"
+            errorMessage = "Your word should be at least 3 letters long"
         } else if !isOriginal(word: lowerAnswer) {
             errorTitle = "Word used already"
             errorMessage = "Be more original!"
@@ -68,13 +81,11 @@ class ViewController: UITableViewController {
         }
         
         if let errorTitle, let errorMessage {
-            let ac = UIAlertController(title: errorTitle, message: errorMessage, preferredStyle: .alert)
-            ac.addAction(UIAlertAction(title: "OK", style: .default))
-            present(ac, animated: true)
+            showErrorAlert(errorTitle, errorMessage)
             return
         }
         
-        usedWords.insert(answer, at: 0)
+        usedWords.insert(lowerAnswer, at: 0)
         let indexPath = IndexPath(row: 0, section: 0)
         tableView.insertRows(at: [indexPath], with: .automatic)
     }
@@ -103,6 +114,20 @@ class ViewController: UITableViewController {
         let misspelledRange = checker.rangeOfMisspelledWord(in: word, range: range, startingAt: 0, wrap: false, language: "en")
         
         return misspelledRange.location == NSNotFound
+    }
+    
+    func isLongEnough(word: String) -> Bool {
+        return word.count >= 3
+    }
+    
+    func isNew(word: String) -> Bool {
+        return title != word
+    }
+    
+    func showErrorAlert(_ title: String, _ message: String) {
+        let ac = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        ac.addAction(UIAlertAction(title: "OK", style: .default))
+        present(ac, animated: true)
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
