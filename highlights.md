@@ -1292,3 +1292,111 @@ This view controller can be used to implement sharing functionality in iOS apps.
 ## `@IBAction` implies `@objc`
 
 Apparently the `@IBAction` automatically implies `@objc` as well since the method marked with `@IBAction` is supposed to be called by the system which is written in Objective-C
+
+## Inheritence before conformance 
+
+If a class inherits from another and conform to protocol(s) at the same time, we write the superclass identifier first then the rest of the protocols.
+
+```swift
+class Superclass {
+    //...
+}
+
+protocol Protocol1 {
+    //...
+}
+
+protocol Protocol2 {
+    //...
+}
+
+protocol Protocol3 {
+    //...
+}
+
+class MyClass: Superclass, Protocol1, Protocol2, Protocol3 {
+    //...
+}
+```
+
+## Capturing in closures: strong vs weak vs unowned
+
+By default, closures capture values used in them strongly which prevents them from getting destroyed. We can change that using `weak` keyword, which turns these captured values into optionals and allows them to get destroyed and set them to `nil` inside of closures. 
+
+Another alternative is `unowned` which is similar to `weak` but implicitly unwraps the captured values so we can use them without unwrapping them ourselves. This should be used very carefully.
+
+## Strong reference cycles
+
+Also known as retain cycles: two objects contain closures that reference each other and prevent themselves from getting destroyed. Consider the following two classes:
+
+```swift
+class House {
+    var ownerDetails: (() -> Void)?
+
+    func printDetails() {
+        print("This is a great house.")
+    }
+
+    deinit {
+        print("I'm being demolished!")
+    }
+}
+
+class Owner {
+    var houseDetails: (() -> Void)?
+
+    func printDetails() {
+        print("I own a house.")
+    }
+
+    deinit {
+        print("I'm dying!")
+    }
+}
+```
+
+Both can hold a closure and both have deinitializers to let us know when they're destroyed. Here's how we could create a strong reference (retain) cycle:
+
+```swift
+print("Creating a house and an owner")
+
+do {
+    let house = House()
+    let owner = Owner()
+    house.ownerDetails = owner.printDetails
+    owner.houseDetails = house.printDetails
+}
+
+print("Done")
+```
+
+Output:
+
+```
+Creating a house and an owner
+Done
+```
+
+Notice how the deinitializers didn't run cause each instance strongly captures the other in its closure. To solce this, we can use a `weak` capture:
+
+```swift
+print("Creating a house and an owner")
+
+do {
+    let house = House()
+    let owner = Owner()
+    house.ownerDetails = { [weak owner] in owner?.printDetails() }
+    owner.houseDetails = { [weak house] in house?.printDetails() }
+}
+
+print("Done")
+```
+
+Output:
+
+```
+Creating a house and an owner
+I'm dying!
+I'm being demolished!
+Done
+```
