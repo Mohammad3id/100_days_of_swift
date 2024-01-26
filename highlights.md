@@ -1327,7 +1327,7 @@ Another alternative is `unowned` which is similar to `weak` but implicitly unwra
 
 ## Strong reference cycles
 
-Also known as retain cycles: two objects contain closures that reference each other and prevent themselves from getting destroyed. Consider the following two classes:
+Also known as retain cycles: two objects contain closures that reference each other and prevent themselves from getting destroyed, causing a memory leak. Consider the following two classes:
 
 ```swift
 class House {
