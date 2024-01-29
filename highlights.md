@@ -1400,3 +1400,12 @@ I'm dying!
 I'm being demolished!
 Done
 ```
+
+## Navigation Controllers ar placed inside Tab Bar Controllers
+
+For some reason.
+
+## `UIStoryboard`
+
+Apparently you can have multiple storyboards in one app and can use load them by making an instance of `UIStoryboard` and providing the storyboard name and the bundle that contains it. 
+>Passing `nil` as the bundle means "use the current app main bundle".
