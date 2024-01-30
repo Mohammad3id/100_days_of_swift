@@ -15,6 +15,8 @@
 		0191D0502B68EE9A00223F5F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0191D04E2B68EE9A00223F5F /* LaunchScreen.storyboard */; };
 		0191D0592B68FD5400223F5F /* level2.txt in Resources */ = {isa = PBXBuildFile; fileRef = 0191D0572B68FD5300223F5F /* level2.txt */; };
 		0191D05A2B68FD5400223F5F /* level1.txt in Resources */ = {isa = PBXBuildFile; fileRef = 0191D0582B68FD5300223F5F /* level1.txt */; };
+		0191D05D2B6921C600223F5F /* level3.txt in Resources */ = {isa = PBXBuildFile; fileRef = 0191D05C2B6921C600223F5F /* level3.txt */; };
+		0191D05F2B69223000223F5F /* level4.txt in Resources */ = {isa = PBXBuildFile; fileRef = 0191D05E2B69223000223F5F /* level4.txt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +30,8 @@
 		0191D0512B68EE9A00223F5F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0191D0572B68FD5300223F5F /* level2.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = level2.txt; sourceTree = "<group>"; };
 		0191D0582B68FD5300223F5F /* level1.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = level1.txt; sourceTree = "<group>"; };
+		0191D05C2B6921C600223F5F /* level3.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = level3.txt; sourceTree = "<group>"; };
+		0191D05E2B69223000223F5F /* level4.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = level4.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,10 +71,20 @@
 				0191D04C2B68EE9A00223F5F /* Assets.xcassets */,
 				0191D04E2B68EE9A00223F5F /* LaunchScreen.storyboard */,
 				0191D0512B68EE9A00223F5F /* Info.plist */,
-				0191D0582B68FD5300223F5F /* level1.txt */,
-				0191D0572B68FD5300223F5F /* level2.txt */,
+				0191D05B2B69216600223F5F /* levels */,
 			);
 			path = project8;
+			sourceTree = "<group>";
+		};
+		0191D05B2B69216600223F5F /* levels */ = {
+			isa = PBXGroup;
+			children = (
+				0191D0582B68FD5300223F5F /* level1.txt */,
+				0191D0572B68FD5300223F5F /* level2.txt */,
+				0191D05C2B6921C600223F5F /* level3.txt */,
+				0191D05E2B69223000223F5F /* level4.txt */,
+			);
+			path = levels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -132,10 +146,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				0191D05A2B68FD5400223F5F /* level1.txt in Resources */,
+				0191D05D2B6921C600223F5F /* level3.txt in Resources */,
 				0191D0502B68EE9A00223F5F /* LaunchScreen.storyboard in Resources */,
 				0191D04D2B68EE9A00223F5F /* Assets.xcassets in Resources */,
 				0191D0592B68FD5400223F5F /* level2.txt in Resources */,
 				0191D04B2B68EE9A00223F5F /* Main.storyboard in Resources */,
+				0191D05F2B69223000223F5F /* level4.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

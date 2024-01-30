@@ -12,6 +12,7 @@ class ViewController: UIViewController {
     var answersLabel: UILabel!
     var currentAnswer: UITextField!
     var scoreLabel: UILabel!
+    var levelLabel: UILabel!
     var letterButtons = [UIButton]()
 
     var activatedButtons = [UIButton]()
@@ -19,7 +20,7 @@ class ViewController: UIViewController {
 
     var score = 0
     var level = 1
-    var levelsCount = 2
+    var levelsCount = 0
     var currentGuessedWords = 0
 
     override func loadView() {
@@ -31,6 +32,13 @@ class ViewController: UIViewController {
         scoreLabel.textAlignment = .right
         scoreLabel.text = "Score: 0"
         view.addSubview(scoreLabel)
+        
+        levelLabel = UILabel()
+        levelLabel.translatesAutoresizingMaskIntoConstraints = false
+        levelLabel.textAlignment = .left
+        levelLabel.text = "Level: 1"
+        view.addSubview(levelLabel)
+        
 
         cluesLabel = UILabel()
         cluesLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -79,6 +87,9 @@ class ViewController: UIViewController {
         NSLayoutConstraint.activate([
             scoreLabel.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor),
             scoreLabel.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor),
+            
+            levelLabel.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor),
+            levelLabel.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor),
 
             cluesLabel.topAnchor.constraint(equalTo: scoreLabel.bottomAnchor),
             cluesLabel.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor, constant: 100),
@@ -130,6 +141,15 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let fm = FileManager()
+        let contents = try! fm.contentsOfDirectory(atPath: Bundle.main.resourcePath!)
+        
+        for fileName in contents {
+            if fileName.starts(with: "level") {
+                levelsCount += 1
+            }
+        }
 
         loadLevel()
     }
@@ -203,6 +223,7 @@ class ViewController: UIViewController {
     
     func levelUp(_ _: UIAlertAction) {
         level += 1
+        levelLabel.text = "Level: \(level)"
         solutions.removeAll()
         currentGuessedWords = 0
         loadLevel()
@@ -218,6 +239,7 @@ class ViewController: UIViewController {
         scoreLabel.text = "Score: \(score)"
         solutions.removeAll()
         level = 1
+        levelLabel.text = "Level: \(level)"
         loadLevel()
         
         for btn in letterButtons {
