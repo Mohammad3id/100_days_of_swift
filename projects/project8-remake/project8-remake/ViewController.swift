@@ -16,7 +16,7 @@ class ViewController: UIViewController {
     }
     var scoreLabel = UILabel()
     
-    let maxLevel = 4
+    var maxLevel = 0
     var level = 0 {
         didSet {
             levelLabel.text = "Level: \(level)"
@@ -135,6 +135,13 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let fm = FileManager()
+        for content in try! fm.contentsOfDirectory(atPath: Bundle.main.bundlePath) {
+            if content.starts(with: "level") {
+                maxLevel += 1
+            }
+        }
         
         score = 0
         loadNextLevel()
