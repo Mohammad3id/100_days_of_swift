@@ -7,33 +7,35 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		016BC4F12B6C5A53007BE7A5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 016BC4F02B6C5A53007BE7A5 /* AppDelegate.swift */; };
-		016BC4F32B6C5A53007BE7A5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 016BC4F22B6C5A53007BE7A5 /* SceneDelegate.swift */; };
-		016BC4F52B6C5A53007BE7A5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 016BC4F42B6C5A53007BE7A5 /* ViewController.swift */; };
-		016BC4F82B6C5A53007BE7A5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 016BC4F62B6C5A53007BE7A5 /* Main.storyboard */; };
-		016BC4FA2B6C5A54007BE7A5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 016BC4F92B6C5A54007BE7A5 /* Assets.xcassets */; };
-		016BC4FD2B6C5A54007BE7A5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 016BC4FB2B6C5A54007BE7A5 /* LaunchScreen.storyboard */; };
-		016BC5062B6C5C64007BE7A5 /* Petitions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 016BC5042B6C5C64007BE7A5 /* Petitions.swift */; };
-		016BC5072B6C5C64007BE7A5 /* Petition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 016BC5052B6C5C64007BE7A5 /* Petition.swift */; };
-		016BC5092B6C6185007BE7A5 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 016BC5082B6C6185007BE7A5 /* DetailViewController.swift */; };
+		016BC5172B6C663D007BE7A5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 016BC5162B6C663D007BE7A5 /* AppDelegate.swift */; };
+		016BC5192B6C663D007BE7A5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 016BC5182B6C663D007BE7A5 /* SceneDelegate.swift */; };
+		016BC51B2B6C663D007BE7A5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 016BC51A2B6C663D007BE7A5 /* ViewController.swift */; };
+		016BC51E2B6C663D007BE7A5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 016BC51C2B6C663D007BE7A5 /* Main.storyboard */; };
+		016BC5202B6C663E007BE7A5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 016BC51F2B6C663E007BE7A5 /* Assets.xcassets */; };
+		016BC5232B6C663E007BE7A5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 016BC5212B6C663E007BE7A5 /* LaunchScreen.storyboard */; };
+		016BC52F2B6C66AC007BE7A5 /* level2.txt in Resources */ = {isa = PBXBuildFile; fileRef = 016BC52B2B6C66AC007BE7A5 /* level2.txt */; };
+		016BC5302B6C66AC007BE7A5 /* level3.txt in Resources */ = {isa = PBXBuildFile; fileRef = 016BC52C2B6C66AC007BE7A5 /* level3.txt */; };
+		016BC5312B6C66AC007BE7A5 /* level1.txt in Resources */ = {isa = PBXBuildFile; fileRef = 016BC52D2B6C66AC007BE7A5 /* level1.txt */; };
+		016BC5322B6C66AC007BE7A5 /* level4.txt in Resources */ = {isa = PBXBuildFile; fileRef = 016BC52E2B6C66AC007BE7A5 /* level4.txt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		016BC4ED2B6C5A53007BE7A5 /* project7-remake.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "project7-remake.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		016BC4F02B6C5A53007BE7A5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		016BC4F22B6C5A53007BE7A5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		016BC4F42B6C5A53007BE7A5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		016BC4F72B6C5A53007BE7A5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		016BC4F92B6C5A54007BE7A5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		016BC4FC2B6C5A54007BE7A5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		016BC4FE2B6C5A54007BE7A5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		016BC5042B6C5C64007BE7A5 /* Petitions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Petitions.swift; path = ../../project7/project7/Petitions.swift; sourceTree = "<group>"; };
-		016BC5052B6C5C64007BE7A5 /* Petition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Petition.swift; path = ../../project7/project7/Petition.swift; sourceTree = "<group>"; };
-		016BC5082B6C6185007BE7A5 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		016BC5132B6C663D007BE7A5 /* project8-remake.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "project8-remake.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		016BC5162B6C663D007BE7A5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		016BC5182B6C663D007BE7A5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		016BC51A2B6C663D007BE7A5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		016BC51D2B6C663D007BE7A5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		016BC51F2B6C663E007BE7A5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		016BC5222B6C663E007BE7A5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		016BC5242B6C663E007BE7A5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		016BC52B2B6C66AC007BE7A5 /* level2.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = level2.txt; sourceTree = "<group>"; };
+		016BC52C2B6C66AC007BE7A5 /* level3.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = level3.txt; sourceTree = "<group>"; };
+		016BC52D2B6C66AC007BE7A5 /* level1.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = level1.txt; sourceTree = "<group>"; };
+		016BC52E2B6C66AC007BE7A5 /* level4.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = level4.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		016BC4EA2B6C5A53007BE7A5 /* Frameworks */ = {
+		016BC5102B6C663D007BE7A5 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -43,75 +45,85 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		016BC4E42B6C5A53007BE7A5 = {
+		016BC50A2B6C663D007BE7A5 = {
 			isa = PBXGroup;
 			children = (
-				016BC4EF2B6C5A53007BE7A5 /* project7-remake */,
-				016BC4EE2B6C5A53007BE7A5 /* Products */,
+				016BC5152B6C663D007BE7A5 /* project8-remake */,
+				016BC5142B6C663D007BE7A5 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		016BC4EE2B6C5A53007BE7A5 /* Products */ = {
+		016BC5142B6C663D007BE7A5 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				016BC4ED2B6C5A53007BE7A5 /* project7-remake.app */,
+				016BC5132B6C663D007BE7A5 /* project8-remake.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		016BC4EF2B6C5A53007BE7A5 /* project7-remake */ = {
+		016BC5152B6C663D007BE7A5 /* project8-remake */ = {
 			isa = PBXGroup;
 			children = (
-				016BC4F02B6C5A53007BE7A5 /* AppDelegate.swift */,
-				016BC4F22B6C5A53007BE7A5 /* SceneDelegate.swift */,
-				016BC4F42B6C5A53007BE7A5 /* ViewController.swift */,
-				016BC4F62B6C5A53007BE7A5 /* Main.storyboard */,
-				016BC4F92B6C5A54007BE7A5 /* Assets.xcassets */,
-				016BC4FB2B6C5A54007BE7A5 /* LaunchScreen.storyboard */,
-				016BC4FE2B6C5A54007BE7A5 /* Info.plist */,
-				016BC5052B6C5C64007BE7A5 /* Petition.swift */,
-				016BC5042B6C5C64007BE7A5 /* Petitions.swift */,
-				016BC5082B6C6185007BE7A5 /* DetailViewController.swift */,
+				016BC5162B6C663D007BE7A5 /* AppDelegate.swift */,
+				016BC5182B6C663D007BE7A5 /* SceneDelegate.swift */,
+				016BC51A2B6C663D007BE7A5 /* ViewController.swift */,
+				016BC51C2B6C663D007BE7A5 /* Main.storyboard */,
+				016BC51F2B6C663E007BE7A5 /* Assets.xcassets */,
+				016BC5212B6C663E007BE7A5 /* LaunchScreen.storyboard */,
+				016BC5242B6C663E007BE7A5 /* Info.plist */,
+				016BC52A2B6C66AC007BE7A5 /* levels */,
 			);
-			path = "project7-remake";
+			path = "project8-remake";
+			sourceTree = "<group>";
+		};
+		016BC52A2B6C66AC007BE7A5 /* levels */ = {
+			isa = PBXGroup;
+			children = (
+				016BC52D2B6C66AC007BE7A5 /* level1.txt */,
+				016BC52B2B6C66AC007BE7A5 /* level2.txt */,
+				016BC52C2B6C66AC007BE7A5 /* level3.txt */,
+				016BC52E2B6C66AC007BE7A5 /* level4.txt */,
+			);
+			name = levels;
+			path = ../../project8/project8/levels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		016BC4EC2B6C5A53007BE7A5 /* project7-remake */ = {
+		016BC5122B6C663D007BE7A5 /* project8-remake */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 016BC5012B6C5A54007BE7A5 /* Build configuration list for PBXNativeTarget "project7-remake" */;
+			buildConfigurationList = 016BC5272B6C663E007BE7A5 /* Build configuration list for PBXNativeTarget "project8-remake" */;
 			buildPhases = (
-				016BC4E92B6C5A53007BE7A5 /* Sources */,
-				016BC4EA2B6C5A53007BE7A5 /* Frameworks */,
-				016BC4EB2B6C5A53007BE7A5 /* Resources */,
+				016BC50F2B6C663D007BE7A5 /* Sources */,
+				016BC5102B6C663D007BE7A5 /* Frameworks */,
+				016BC5112B6C663D007BE7A5 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = "project7-remake";
-			productName = "project7-remake";
-			productReference = 016BC4ED2B6C5A53007BE7A5 /* project7-remake.app */;
+			name = "project8-remake";
+			productName = "project8-remake";
+			productReference = 016BC5132B6C663D007BE7A5 /* project8-remake.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		016BC4E52B6C5A53007BE7A5 /* Project object */ = {
+		016BC50B2B6C663D007BE7A5 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1520;
 				LastUpgradeCheck = 1520;
 				TargetAttributes = {
-					016BC4EC2B6C5A53007BE7A5 = {
+					016BC5122B6C663D007BE7A5 = {
 						CreatedOnToolsVersion = 15.2;
 					};
 				};
 			};
-			buildConfigurationList = 016BC4E82B6C5A53007BE7A5 /* Build configuration list for PBXProject "project7-remake" */;
+			buildConfigurationList = 016BC50E2B6C663D007BE7A5 /* Build configuration list for PBXProject "project8-remake" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -119,58 +131,59 @@
 				en,
 				Base,
 			);
-			mainGroup = 016BC4E42B6C5A53007BE7A5;
-			productRefGroup = 016BC4EE2B6C5A53007BE7A5 /* Products */;
+			mainGroup = 016BC50A2B6C663D007BE7A5;
+			productRefGroup = 016BC5142B6C663D007BE7A5 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				016BC4EC2B6C5A53007BE7A5 /* project7-remake */,
+				016BC5122B6C663D007BE7A5 /* project8-remake */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		016BC4EB2B6C5A53007BE7A5 /* Resources */ = {
+		016BC5112B6C663D007BE7A5 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				016BC4FD2B6C5A54007BE7A5 /* LaunchScreen.storyboard in Resources */,
-				016BC4FA2B6C5A54007BE7A5 /* Assets.xcassets in Resources */,
-				016BC4F82B6C5A53007BE7A5 /* Main.storyboard in Resources */,
+				016BC5302B6C66AC007BE7A5 /* level3.txt in Resources */,
+				016BC5232B6C663E007BE7A5 /* LaunchScreen.storyboard in Resources */,
+				016BC5202B6C663E007BE7A5 /* Assets.xcassets in Resources */,
+				016BC5312B6C66AC007BE7A5 /* level1.txt in Resources */,
+				016BC52F2B6C66AC007BE7A5 /* level2.txt in Resources */,
+				016BC51E2B6C663D007BE7A5 /* Main.storyboard in Resources */,
+				016BC5322B6C66AC007BE7A5 /* level4.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		016BC4E92B6C5A53007BE7A5 /* Sources */ = {
+		016BC50F2B6C663D007BE7A5 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				016BC5072B6C5C64007BE7A5 /* Petition.swift in Sources */,
-				016BC4F52B6C5A53007BE7A5 /* ViewController.swift in Sources */,
-				016BC5062B6C5C64007BE7A5 /* Petitions.swift in Sources */,
-				016BC5092B6C6185007BE7A5 /* DetailViewController.swift in Sources */,
-				016BC4F12B6C5A53007BE7A5 /* AppDelegate.swift in Sources */,
-				016BC4F32B6C5A53007BE7A5 /* SceneDelegate.swift in Sources */,
+				016BC51B2B6C663D007BE7A5 /* ViewController.swift in Sources */,
+				016BC5172B6C663D007BE7A5 /* AppDelegate.swift in Sources */,
+				016BC5192B6C663D007BE7A5 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		016BC4F62B6C5A53007BE7A5 /* Main.storyboard */ = {
+		016BC51C2B6C663D007BE7A5 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				016BC4F72B6C5A53007BE7A5 /* Base */,
+				016BC51D2B6C663D007BE7A5 /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
-		016BC4FB2B6C5A54007BE7A5 /* LaunchScreen.storyboard */ = {
+		016BC5212B6C663E007BE7A5 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				016BC4FC2B6C5A54007BE7A5 /* Base */,
+				016BC5222B6C663E007BE7A5 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -178,7 +191,7 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		016BC4FF2B6C5A54007BE7A5 /* Debug */ = {
+		016BC5252B6C663E007BE7A5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -241,7 +254,7 @@
 			};
 			name = Debug;
 		};
-		016BC5002B6C5A54007BE7A5 /* Release */ = {
+		016BC5262B6C663E007BE7A5 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -297,7 +310,7 @@
 			};
 			name = Release;
 		};
-		016BC5022B6C5A54007BE7A5 /* Debug */ = {
+		016BC5282B6C663E007BE7A5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -306,7 +319,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = C4C655GVXZ;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "project7-remake/Info.plist";
+				INFOPLIST_FILE = "project8-remake/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -317,15 +330,19 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.example.project7-remake";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.example.project8-remake";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
 		};
-		016BC5032B6C5A54007BE7A5 /* Release */ = {
+		016BC5292B6C663E007BE7A5 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -334,7 +351,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = C4C655GVXZ;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "project7-remake/Info.plist";
+				INFOPLIST_FILE = "project8-remake/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -345,36 +362,40 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.example.project7-remake";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.example.project8-remake";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		016BC4E82B6C5A53007BE7A5 /* Build configuration list for PBXProject "project7-remake" */ = {
+		016BC50E2B6C663D007BE7A5 /* Build configuration list for PBXProject "project8-remake" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				016BC4FF2B6C5A54007BE7A5 /* Debug */,
-				016BC5002B6C5A54007BE7A5 /* Release */,
+				016BC5252B6C663E007BE7A5 /* Debug */,
+				016BC5262B6C663E007BE7A5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		016BC5012B6C5A54007BE7A5 /* Build configuration list for PBXNativeTarget "project7-remake" */ = {
+		016BC5272B6C663E007BE7A5 /* Build configuration list for PBXNativeTarget "project8-remake" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				016BC5022B6C5A54007BE7A5 /* Debug */,
-				016BC5032B6C5A54007BE7A5 /* Release */,
+				016BC5282B6C663E007BE7A5 /* Debug */,
+				016BC5292B6C663E007BE7A5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 016BC4E52B6C5A53007BE7A5 /* Project object */;
+	rootObject = 016BC50B2B6C663D007BE7A5 /* Project object */;
 }

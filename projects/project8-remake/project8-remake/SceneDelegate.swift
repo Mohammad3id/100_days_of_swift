@@ -1,6 +1,6 @@
 //
 //  SceneDelegate.swift
-//  project7-remake
+//  project8-remake
 //
 //  Created by Mohammad Eid on 02/02/2024.
 //
@@ -17,13 +17,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let _ = (scene as? UIWindowScene) else { return }
-        
-        if let tabBarController = window?.rootViewController as? UITabBarController {
-            let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-            let vc = storyBoard.instantiateViewController(withIdentifier: "NavController")
-            vc.tabBarItem = UITabBarItem(tabBarSystemItem: .topRated, tag: 1)
-            tabBarController.viewControllers?.append(vc)
-        }
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
