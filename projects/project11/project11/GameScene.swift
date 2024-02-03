@@ -15,6 +15,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             scoreLabel.text = "Score: \(score)"
         }
     }
+    
+    var ballsLeftLabel = SKLabelNode(fontNamed: "Chalkduster")
+    var ballsLeft = 5 {
+        didSet {
+            ballsLeftLabel.text = "Balls: \(ballsLeft)"
+        }
+    }
 
     var editLabel = SKLabelNode(fontNamed: "Chalkduster")
     var editingMode = false {
@@ -26,6 +33,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             }
         }
     }
+    
+    let ballYThreshold = CGFloat(500)
 
     override func didMove(to view: SKView) {
         physicsWorld.contactDelegate = self
@@ -36,10 +45,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         background.zPosition = -1
         addChild(background)
 
-        makeSlot(at: CGPoint(x: 128, y: 0), isGood: true)
-        makeSlot(at: CGPoint(x: 384, y: 0), isGood: false)
-        makeSlot(at: CGPoint(x: 640, y: 0), isGood: true)
-        makeSlot(at: CGPoint(x: 896, y: 0), isGood: false)
+        makeSlot(at: CGPoint(x: 128, y: -10), isGood: true)
+        makeSlot(at: CGPoint(x: 384, y: -10), isGood: false)
+        makeSlot(at: CGPoint(x: 640, y: -10), isGood: true)
+        makeSlot(at: CGPoint(x: 896, y: -10), isGood: false)
 
         makeBouncer(at: CGPoint(x: 0, y: 0))
         makeBouncer(at: CGPoint(x: 256, y: 0))
@@ -47,14 +56,23 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         makeBouncer(at: CGPoint(x: 768, y: 0))
         makeBouncer(at: CGPoint(x: 1024, y: 0))
 
-        scoreLabel.text = "Score: 0"
+        score = 0
         scoreLabel.horizontalAlignmentMode = .left
         scoreLabel.position = CGPoint(x: 10, y: 670)
         addChild(scoreLabel)
 
-        editLabel.text = "Edit"
-        editLabel.position = CGPoint(x: 950, y: 670)
+        editingMode = false
+        editLabel.position = CGPoint(x: 512, y: 670)
         addChild(editLabel)
+        
+        ballsLeft = 5
+        ballsLeftLabel.position = CGPoint(x: 950, y: 670)
+        addChild(ballsLeftLabel)
+        
+        let ballThresholdLine = SKShapeNode(rect: CGRect(x: -100, y: ballYThreshold, width: 2000, height: 1))
+        ballThresholdLine.fillColor = UIColor.red
+        addChild(ballThresholdLine)
+        
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -65,24 +83,34 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
             if objects.contains(editLabel) {
                 editingMode.toggle()
+                ballsLeft = 5
+                score = 0
             } else {
                 if editingMode {
-                    makeObstacle(at: location)
+                    if location.y < ballYThreshold {
+                        makeObstacle(at: location)
+                    }
                 } else {
-                    makeBall(at: location)
+                    if location.y > ballYThreshold && ballsLeft > 0 {
+                        makeBall(at: location)
+                    }
                 }
             }
         }
     }
 
     func makeBall(at position: CGPoint) {
-        let ball = SKSpriteNode(imageNamed: "ballRed")
+        let ballImageNames = ["ballBlue", "ballYellow", "ballPurple", "ballGrey", "ballRed", "ballCyan", "ballGreen" ]
+        let ball = SKSpriteNode(imageNamed: ballImageNames.randomElement()!)
+        
         ball.physicsBody = SKPhysicsBody(circleOfRadius: ball.size.width / 2)
         ball.physicsBody?.contactTestBitMask = ball.physicsBody!.collisionBitMask
         ball.physicsBody?.restitution = 0.4
         ball.position = position
         ball.name = "ball"
         addChild(ball)
+        
+        ballsLeft -= 1
     }
 
     func makeObstacle(at position: CGPoint) {
@@ -101,6 +129,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         box.physicsBody = SKPhysicsBody(rectangleOf: box.size)
         box.physicsBody?.isDynamic = false
+        
+        box.name = "obstacle"
         
         addChild(box)
         
@@ -122,7 +152,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             slotBase = SKSpriteNode(imageNamed: "slotBaseGood")
             slotGlow = SKSpriteNode(imageNamed: "slotGlowGood")
             slotBase.name = "good"
-
         } else {
             slotBase = SKSpriteNode(imageNamed: "slotBaseBad")
             slotGlow = SKSpriteNode(imageNamed: "slotGlowBad")
@@ -145,11 +174,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func didBegin(_ contact: SKPhysicsContact) {
         guard let nodeA = contact.bodyA.node else { return }
         guard let nodeB = contact.bodyB.node else { return }
+        
 
         if nodeA.name == "ball" {
             colltionBetween(ball: nodeA, object: nodeB)
         } else if nodeB.name == "ball" {
             colltionBetween(ball: nodeB, object: nodeA)
+        }
+        
+        if nodeA.name == "obstacle" {
+            nodeA.removeFromParent()
+        } else if nodeB.name == "obstacle" {
+            nodeB.removeFromParent()
         }
     }
 
@@ -157,6 +193,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if object.name == "good" {
             destroy(ball)
             score += 1
+            ballsLeft += 1
         } else if object.name == "bad" {
             destroy(ball)
             score -= 1
