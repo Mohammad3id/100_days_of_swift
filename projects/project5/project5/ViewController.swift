@@ -26,12 +26,24 @@ class ViewController: UITableViewController {
         if allWords.isEmpty {
             allWords = ["slikworm"]
         }
-
-        startGame()
+        
+        let defaults = UserDefaults.standard
+        
+        if let savedCrrentWord = defaults.string(forKey: "currentWord"), let savedUsedWords = defaults.stringArray(forKey: "usedWords") {
+            title = savedCrrentWord
+            usedWords = savedUsedWords
+            tableView.reloadData()
+        } else {
+            startGame()
+        }
+        
     }
 
     @objc func startGame() {
         title = allWords.randomElement()
+    
+        let defaults = UserDefaults.standard
+        defaults.setValue(title ?? "", forKey: "currentWord")
         
         var indexPathes = [IndexPath]()
         for i in 0..<usedWords.count {
@@ -39,6 +51,8 @@ class ViewController: UITableViewController {
         }
         usedWords.removeAll(keepingCapacity: true)
         tableView.deleteRows(at: indexPathes, with: .automatic)
+        
+        defaults.setValue(usedWords, forKey: "usedWords")
     }
 
     @objc func promptForAnswer() {
@@ -62,7 +76,6 @@ class ViewController: UITableViewController {
         var errorMessage: String?
         
         if !isNew(word: lowerAnswer) {
-            guard let title = title?.lowercased() else { return }
             errorTitle = "Word isn't new"
             errorMessage = "Come up with your own words!"
         } else if !isPossible(word: lowerAnswer) {
@@ -88,6 +101,7 @@ class ViewController: UITableViewController {
         usedWords.insert(lowerAnswer, at: 0)
         let indexPath = IndexPath(row: 0, section: 0)
         tableView.insertRows(at: [indexPath], with: .automatic)
+        UserDefaults.standard.setValue(usedWords, forKey: "usedWords")
     }
     
     func isPossible(word: String) -> Bool {
