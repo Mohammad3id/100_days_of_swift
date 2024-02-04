@@ -19,6 +19,8 @@ class ViewController: UIViewController {
     var score = 0
 
     var maxRounds = 10
+    
+    var highScore = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,7 +32,9 @@ class ViewController: UIViewController {
         button3.layer.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.1).cgColor
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(showScore))
-
+        
+        highScore = UserDefaults.standard.integer(forKey: "highscore")
+        
         askQuestion()
     }
 
@@ -70,7 +74,16 @@ class ViewController: UIViewController {
     }
 
     func endGame() {
-        let alertController = UIAlertController(title: "Game Over", message: "You scored \(score) out of \(maxRounds)", preferredStyle: .alert)
+        var title: String
+        if score > highScore {
+            title = "New Highscore!"
+            UserDefaults.standard.setValue(score, forKey: "highscore")
+            highScore = score
+        } else {
+            title = "Game Over"
+        }
+        
+        let alertController = UIAlertController(title: title, message: "You scored \(score) out of \(maxRounds)", preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "Play Again", style: .default) { _ in
             self.score = 0
             self.round = 0
@@ -82,7 +95,6 @@ class ViewController: UIViewController {
     @objc func showScore() {
         let activityViewController = UIActivityViewController(activityItems: ["Score: \(score)"], applicationActivities: [])
         activityViewController.popoverPresentationController?.barButtonItem = navigationItem.rightBarButtonItem
-        activityViewController.
         present(activityViewController, animated: true)
     }
 }
