@@ -10,6 +10,8 @@ import UIKit
 class ViewController: UITableViewController {
     var pictures = [String]()
     
+    var pictureViews = [String: Int]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -20,6 +22,8 @@ class ViewController: UITableViewController {
         title = "Storm Viewer"
         
         navigationController?.navigationBar.prefersLargeTitles = true
+        
+        
     }
     
     func loadPictures() {
@@ -34,6 +38,12 @@ class ViewController: UITableViewController {
         }
         pictures.sort()
         
+        let defaults = UserDefaults.standard
+        
+        for picture in pictures {
+            pictureViews[picture] = defaults.integer(forKey: "\(picture)_views")
+        }
+        
         DispatchQueue.main.async {
             self.tableView.reloadData()
         }
@@ -45,15 +55,24 @@ class ViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Picture", for: indexPath)
-        cell.textLabel?.text = pictures[indexPath.row]
+        let picture = pictures[indexPath.row]
+        cell.textLabel?.text = picture
+        cell.detailTextLabel?.text = "\(pictureViews[picture] ?? 0)"
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let detailViewController = storyboard?.instantiateViewController(identifier: "Detail") as? DetailViewController {
-            detailViewController.selectedImage = pictures[indexPath.row]
+            let picture = pictures[indexPath.row]
+            detailViewController.selectedImage = picture
             detailViewController.title = "Picture \(indexPath.row + 1) of \(pictures.count)"
             navigationController?.pushViewController(detailViewController, animated: true)
+            
+            let newViews = pictureViews[picture, default: 0] + 1
+            pictureViews[picture] = newViews
+            UserDefaults.standard.setValue(newViews, forKey: "\(picture)_views")
+            
+            tableView.reloadRows(at: [indexPath], with: .automatic)
         }
     }
 
