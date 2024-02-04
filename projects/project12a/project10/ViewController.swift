@@ -15,6 +15,14 @@ class ViewController: UICollectionViewController, UIImagePickerControllerDelegat
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addNewPerson))
+        
+        let defaults = UserDefaults.standard
+        
+        if let savedPeople = defaults.object(forKey: "people") as? Data {
+            if let decodedPeople = try? NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(savedPeople) as? [Person] {
+                people = decodedPeople
+            }
+        }
     }
     
     @objc func addNewPerson() {
@@ -35,6 +43,7 @@ class ViewController: UICollectionViewController, UIImagePickerControllerDelegat
             let person = Person(name: "Unknown", image: imageName)
             people.append(person)
             collectionView.reloadData()
+            save()
         }
         
         
@@ -97,6 +106,7 @@ class ViewController: UICollectionViewController, UIImagePickerControllerDelegat
             guard let newName = ac?.textFields?.first?.text else {return}
             person.name = newName
             self?.collectionView.reloadData()
+            self?.save()
         })
         
         present(ac, animated: true)
@@ -105,6 +115,14 @@ class ViewController: UICollectionViewController, UIImagePickerControllerDelegat
     func deletePerson(at indexPath: IndexPath) {
         people.remove(at: indexPath.item)
         collectionView.reloadData()
+        save()
+    }
+    
+    func save() {
+        if let savedData = try? NSKeyedArchiver.archivedData(withRootObject: people, requiringSecureCoding: false) {
+            let defaults = UserDefaults.standard
+            defaults.set(savedData, forKey: "people")
+        }
     }
 }
 
