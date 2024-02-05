@@ -124,6 +124,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             ),
             size: size
         )
+        
         box.zRotation = CGFloat.random(in: 0 ... 3)
         box.position = position
         
