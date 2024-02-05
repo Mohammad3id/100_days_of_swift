@@ -9,10 +9,18 @@ import UIKit
 
 class DetailViewController: UIViewController {
 
+    var image: AppImage!
+    
+    
+    @IBOutlet var imageView: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        title = image.caption
+        let imageURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!.appendingPathComponent(image.image)
+        imageView.image = UIImage(contentsOfFile: imageURL.path())
     }
     
 

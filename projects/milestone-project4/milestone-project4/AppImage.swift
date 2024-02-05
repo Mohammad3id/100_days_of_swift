@@ -6,3 +6,8 @@
 //
 
 import Foundation
+
+struct AppImage: Codable {
+    var image: String
+    var caption: String
+}
