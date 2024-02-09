@@ -36,6 +36,8 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
 
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(importPicture))
 
+//        imageView.alpha = 0
+        
         context = CIContext()
         currentFilter = CIFilter(name: filters[0])
         changeFilterButton.setTitle("Filter: \(filters[0])", for: .normal)
@@ -55,10 +57,32 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
 
         currentImage = image
 
-        let beginImage = CIImage(image: currentImage)
-        currentFilter.setValue(beginImage, forKey: kCIInputImageKey)
+        UIView.animate(
+            withDuration: 0.25,
+            delay: 0,
+            animations: {
+                self.imageView.alpha = 0
+            },
+            completion: { _ in
+                let beginImage = CIImage(image: self.currentImage)
+                self.currentFilter.setValue(beginImage, forKey: kCIInputImageKey)
 
-        applyProcessing()
+                UIView.animate(withDuration: 0.25) {
+                    self.imageView.alpha = 1
+                }
+                
+                self.applyProcessing()
+            }
+        )
+        
+//        let beginImage = CIImage(image: currentImage)
+//        currentFilter.setValue(beginImage, forKey: kCIInputImageKey)
+//
+//        UIView.animate(withDuration: 0.25) {
+//            self.imageView.alpha = 1
+//        }
+//        
+//        applyProcessing()
     }
 
     @IBAction func changeFilter(_ sender: Any) {
