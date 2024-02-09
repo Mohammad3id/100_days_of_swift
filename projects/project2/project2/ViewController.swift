@@ -49,6 +49,10 @@ class ViewController: UIViewController {
             title = "Wrong"
             message = "That's the flag of \(countries[sender.tag].uppercased())."
         }
+        
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 20) {
+            sender.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
+        }
 
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "Continue", style: .default) { [self] _ in
@@ -62,12 +66,16 @@ class ViewController: UIViewController {
     }
     
     func askQuestion() {
+        
         countries.shuffle()
         correctAnswer = Int.random(in: 0 ... 2)
         
-        button1.setImage(UIImage(named: countries[0]), for: .normal)
-        button2.setImage(UIImage(named: countries[1]), for: .normal)
-        button3.setImage(UIImage(named: countries[2]), for: .normal)
+        let buttons = [button1, button2, button3]
+        
+        for (index, button) in buttons.enumerated() {
+            button?.transform = CGAffineTransform.identity
+            button?.setImage(UIImage(named: countries[index]), for: .normal)
+        }
 
         round += 1
         title = "\(countries[correctAnswer].uppercased()) (Round: \(round))"
