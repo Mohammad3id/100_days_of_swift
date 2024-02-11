@@ -1,0 +1,39 @@
+{
+    "countries": [
+        {
+            "name": "Egypt",
+            "flag": "Flag_of_Egypt",
+            "capital": "Cairo",
+            "area": 1002000,
+            "population": 113793010
+        },
+        {
+            "name": "Lebanon",
+            "flag": "Flag_of_Lebanon",
+            "capital": "Beirut",
+            "area": 10452,
+            "population": 5296814
+        },
+        {
+            "name": "Canada",
+            "flag": "Flag_of_Canada",
+            "capital": "Ottawa",
+            "area": 9984670,
+            "population": 40528396
+        },
+        {
+            "name": "Ireland",
+            "flag": "Flag_of_Ireland",
+            "capital": "Dublin",
+            "area": 70273,
+            "population": 5281600
+        },
+        {
+            "name": "Italy",
+            "flag": "Flag_of_Italy",
+            "capital": "Rome",
+            "area": 301340,
+            "population": 58853482
+        }
+    ]
+}
