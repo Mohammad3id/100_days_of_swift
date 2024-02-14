@@ -145,6 +145,8 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     }
 
     func applyProcessing() {
+        if currentImage == nil { return }
+        
         let inputkeys = currentFilter.inputKeys
 
         if inputkeys.contains(kCIInputIntensityKey) { currentFilter.setValue(intensity.value, forKey: kCIInputIntensityKey) }
