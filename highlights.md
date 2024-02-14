@@ -1280,7 +1280,6 @@ What makes them different is their parameters (method overloading):
 - The first on is used for specifying the number of rows in a given table section (which is indicated in its `numberOfRowsInSection` parameter label)
 - The other is used to build the cell to be viewed in a given row (which is indicated by its `cellForRowAt` parameter label).
 
-
 ## `@IBOutlet` and `@IBAction`
 
 Both are ways of connecting "Interface Builder" to code. The difference is that `@IBOutlet` allows our code to trigger interface changes, while `@IBAction` allows our interface to trigger some code.
@@ -1293,7 +1292,7 @@ This view controller can be used to implement sharing functionality in iOS apps.
 
 Apparently the `@IBAction` automatically implies `@objc` as well since the method marked with `@IBAction` is supposed to be called by the system which is written in Objective-C
 
-## Inheritence before conformance 
+## Inheritence before conformance
 
 If a class inherits from another and conform to protocol(s) at the same time, we write the superclass identifier first then the rest of the protocols.
 
@@ -1321,7 +1320,7 @@ class MyClass: Superclass, Protocol1, Protocol2, Protocol3 {
 
 ## Capturing in closures: strong vs weak vs unowned
 
-By default, closures capture values used in them strongly which prevents them from getting destroyed. We can change that using `weak` keyword, which turns these captured values into optionals and allows them to get destroyed and set them to `nil` inside of closures. 
+By default, closures capture values used in them strongly which prevents them from getting destroyed. We can change that using `weak` keyword, which turns these captured values into optionals and allows them to get destroyed and set them to `nil` inside of closures.
 
 Another alternative is `unowned` which is similar to `weak` but implicitly unwraps the captured values so we can use them without unwrapping them ourselves. This should be used very carefully.
 
@@ -1407,5 +1406,18 @@ For some reason.
 
 ## `UIStoryboard`
 
-Apparently you can have multiple storyboards in one app and can use load them by making an instance of `UIStoryboard` and providing the storyboard name and the bundle that contains it. 
->Passing `nil` as the bundle means "use the current app main bundle".
+Apparently you can have multiple storyboards in one app and can use load them by making an instance of `UIStoryboard` and providing the storyboard name and the bundle that contains it.
+
+> Passing `nil` as the bundle means "use the current app main bundle".
+
+## Breakpoints
+
+Breakpoints in XCode can be conditional, have actions, and be ignored a number of time before stopping execution. They're very powerful!
+
+## Exception Breakpoints
+
+We can specify (what seems like) a global breakpoint when an exception is raised, so that we can see the state of our app when it happens.
+
+## Catch View Hirearchy
+
+This is one of the debugging tools that allows us to see our current user interface compononets layered on top of each other in a 3D space so that we can better see what is and isn't there.
