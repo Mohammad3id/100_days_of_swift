@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="zOG-cG-sOM">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Image-->
+        <scene sceneID="7MM-of-jgj">
+            <objects>
+                <viewController title="Image" id="ObA-dk-sSI" customClass="ActionViewController" customModule="Extension" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="zMn-AG-sqS">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="528"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="qy3-SW-fKQ">
+                                <rect key="frame" x="0.0" y="103" width="320" height="391"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" name="CourierNewPSMT" family="Courier New" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                            </textView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="VVe-Uw-JpX"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="qy3-SW-fKQ" firstAttribute="leading" secondItem="VVe-Uw-JpX" secondAttribute="leading" id="CJ6-NT-JHn"/>
+                            <constraint firstItem="VVe-Uw-JpX" firstAttribute="trailing" secondItem="qy3-SW-fKQ" secondAttribute="trailing" id="P7e-gC-M4D"/>
+                            <constraint firstItem="VVe-Uw-JpX" firstAttribute="bottom" secondItem="qy3-SW-fKQ" secondAttribute="bottom" id="UFl-XF-f63"/>
+                            <constraint firstItem="qy3-SW-fKQ" firstAttribute="top" secondItem="VVe-Uw-JpX" secondAttribute="top" id="gPP-ib-uyH"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="Mpo-WQ-NuT"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="320" height="528"/>
+                    <connections>
+                        <outlet property="script" destination="qy3-SW-fKQ" id="tLa-gp-g6k"/>
+                        <outlet property="view" destination="zMn-AG-sqS" id="Qma-de-2ek"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="X47-rx-isc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1056.4885496183206" y="-28.169014084507044"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="qTZ-jE-aaD">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="zOG-cG-sOM" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="BHO-S1-i9b">
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="ObA-dk-sSI" kind="relationship" relationship="rootViewController" id="703-ao-RcK"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Dmi-68-sOe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="130.53435114503816" y="-28.169014084507044"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
