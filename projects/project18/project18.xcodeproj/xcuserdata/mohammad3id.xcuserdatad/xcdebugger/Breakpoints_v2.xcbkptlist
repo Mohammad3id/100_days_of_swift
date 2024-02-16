@@ -10,7 +10,7 @@
             uuid = "FA75351C-5A87-4B2B-BFB7-73ABCCE3DE21"
             shouldBeEnabled = "Yes"
             condition = "i % 10 == 0"
-            ignoreCount = "0"
+            ignoreCount = "3"
             continueAfterRunningActions = "Yes"
             filePath = "project18/ViewController.swift"
             startingColumnNumber = "9223372036854775807"
