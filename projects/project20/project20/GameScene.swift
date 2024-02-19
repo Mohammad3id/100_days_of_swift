@@ -70,6 +70,12 @@ class GameScene: SKScene {
     }
 
     @objc func launchFireworks() {
+        if launchCounter >= 20 {
+            gameTimer?.invalidate()
+            gameOverLabel.isHidden = false
+            return
+        }
+        
         launchCounter += 1
         
         let movementAmount: CGFloat = 1800
@@ -109,11 +115,6 @@ class GameScene: SKScene {
 
         default:
             break
-        }
-        
-        if launchCounter >= 20 {
-            gameTimer?.invalidate()
-            gameOverLabel.isHidden = false
         }
     }
 
