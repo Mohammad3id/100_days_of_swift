@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import UserNotifications
 
 class ViewController: UIViewController {
     @IBOutlet var button1: UIButton!
@@ -36,6 +37,37 @@ class ViewController: UIViewController {
         highScore = UserDefaults.standard.integer(forKey: "highscore")
         
         askQuestion()
+        
+        setupNotifications()
+    }
+    
+    func setupNotifications() {
+        let center = UNUserNotificationCenter.current()
+        
+        center.requestAuthorization(options: [.alert, .badge, .sound]) { (agreed, error) in
+            if agreed {
+                self.scheduleNotifications()
+            } else {
+                print("Sad app noises*")
+            }
+        }
+    }
+    
+    func scheduleNotifications() {
+        let center = UNUserNotificationCenter.current()
+        
+        center.removeAllPendingNotificationRequests()
+        
+        let content = UNMutableNotificationContent()
+        content.title = "Come play again!"
+        content.body = "Refresh your knowledge on country flags!"
+        content.sound = .default
+        
+        for i in 1...7 {
+            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: TimeInterval(24 * 60 * 60 * i), repeats: false)
+            let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+            center.add(request)
+        }
     }
 
     @IBAction func buttonTapped(_ sender: UIButton) {
