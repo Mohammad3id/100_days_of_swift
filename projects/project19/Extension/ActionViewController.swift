@@ -16,8 +16,17 @@ class ActionViewController: UIViewController {
     var pageTitle = ""
     var pageUrl = ""
     
+    var scripts = [String: String]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let fm = FileManager()
+        for scriptUrl in Bundle.main.urls(forResourcesWithExtension: "js", subdirectory: "Scripts") ?? [] {
+            let script = try! String(contentsOf: scriptUrl)
+            let scriptName = scriptUrl.lastPathComponent
+            scripts[scriptName] = script
+        }
         
         if let inputItem = extensionContext?.inputItems.first as? NSExtensionItem {
             if let itemProvider = inputItem.attachments?.first {
@@ -26,18 +35,25 @@ class ActionViewController: UIViewController {
                     guard let itemDictionary = dict as? NSDictionary else { return }
                     guard let javaScriptValues = itemDictionary[NSExtensionJavaScriptPreprocessingResultsKey] as? NSDictionary else { return }
                     
-                    self?.pageTitle = javaScriptValues["title"] as? String ?? ""
-                    self?.pageUrl = javaScriptValues["URL"] as? String ?? ""
+                    let title = javaScriptValues["title"] as? String ?? ""
+                    let url = javaScriptValues["URL"] as? String ?? ""
+                    
+                    self?.pageTitle = title
+                    self?.pageUrl = url
                     
                     DispatchQueue.main.async {
-                        self?.title = self?.pageTitle
+                        self?.title = title
+                        if let host = URL(string: url)?.host(), let savedScript = UserDefaults.standard.string(forKey: host) {
+                            self?.script.text = savedScript
+                        }
                     }
                 }
-                
             }
         }
         
+        
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(done))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Scripts", style: .plain, target: self, action: #selector(showScripts))
         
         let notificationCenter = NotificationCenter.default
         notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillHideNotification, object: nil)
@@ -74,6 +90,19 @@ class ActionViewController: UIViewController {
 //            }
 //        }
     }
+    
+    @objc func showScripts() {
+        let ac = UIAlertController(title: "Scripts", message: nil, preferredStyle: .actionSheet)
+        
+        for (name, script) in scripts {
+            ac.addAction(UIAlertAction(title: name, style: .default) { [weak self] _ in
+                self?.script.text = script
+            })
+        }
+        ac.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        
+        present(ac, animated: true)
+    }
 
     @objc func adjustForKeyboard(notification: Notification) {
         guard let keyboardValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return }
@@ -99,6 +128,11 @@ class ActionViewController: UIViewController {
         let webDictionary: NSDictionary = [NSExtensionJavaScriptFinalizeArgumentKey: argument]
         let customJavaScript = NSItemProvider(item: webDictionary, typeIdentifier: UTType.propertyList.identifier)
         item.attachments = [customJavaScript]
+        
+        if let host = URL(string: pageUrl)?.host() {
+            UserDefaults.standard.setValue(script.text, forKey: host)
+            print("saved")
+        }
         
         extensionContext?.completeRequest(returningItems: [item])
     }
