@@ -1421,3 +1421,34 @@ We can specify (what seems like) a global breakpoint when an exception is raised
 ## Catch View Hirearchy
 
 This is one of the debugging tools that allows us to see our current user interface compononets layered on top of each other in a 3D space so that we can better see what is and isn't there.
+
+
+## `for case let` syntax
+
+A loop that can filter elements. Can be used to typecast elements in a loop like so:
+
+```swift
+for case let label as UILabel in view.subviews {
+    print("Found a label with text \(label.text)")
+}
+```
+
+Only elements that are successfully typecasted to `UILabel` will be used in the loop body.
+
+It can also be used to unwrap optionals and skip `nil` values in an array:
+
+```swift
+let names = ["Bill", nil, "Ted", nil]
+
+for case let name? in names {
+    print(name)
+}
+```
+
+Output:
+
+```swift
+Bill
+Ted
+```
+
