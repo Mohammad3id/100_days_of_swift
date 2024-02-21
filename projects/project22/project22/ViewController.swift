@@ -38,14 +38,15 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         indicator.layer.backgroundColor = UIColor.white.withAlphaComponent(0.25).cgColor
         indicator.transform = CGAffineTransform(scaleX: 0, y: 0)
         
-        var i = 0
-        var proxemities: [CLProximity] = [.far, .near, .immediate, .unknown]
-        
-        Timer.scheduledTimer(withTimeInterval: 5, repeats: true) {[weak self] _ in
-            let proxemity = proxemities[i]
-            i = (i + 1) % proxemities.count
-            self?.update(distance: proxemity)
-        }
+//        Uncomment this to test UI
+//        var i = 0
+//        var proxemities: [CLProximity] = [.far, .near, .immediate, .unknown]
+//        
+//        Timer.scheduledTimer(withTimeInterval: 5, repeats: true) {[weak self] _ in
+//            let proxemity = proxemities[i]
+//            i = (i + 1) % proxemities.count
+//            self?.update(distance: proxemity)
+//        }
         
     }
 
