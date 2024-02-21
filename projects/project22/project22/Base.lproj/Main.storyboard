@@ -22,16 +22,36 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BEACON" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ozG-N4-ba9">
+                                <rect key="frame" x="158.66666666666666" y="537.66666666666663" width="75.666666666666657" height="24"/>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yDu-8U-DO5">
+                                <rect key="frame" x="136.66666666666666" y="378.66666666666669" width="119.99999999999997" height="120"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.15306122448979592" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="120" id="2QZ-cT-TqS"/>
+                                    <constraint firstAttribute="width" constant="120" id="sXm-H7-cka"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="yDu-8U-DO5" firstAttribute="centerY" secondItem="KXQ-Om-1we" secondAttribute="centerY" id="ALS-FY-Y7g"/>
+                            <constraint firstItem="yDu-8U-DO5" firstAttribute="centerX" secondItem="KXQ-Om-1we" secondAttribute="centerX" id="D9O-1D-T5m"/>
+                            <constraint firstItem="ozG-N4-ba9" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="E0A-kJ-pwV"/>
                             <constraint firstItem="KXQ-Om-1we" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="XGI-oZ-iva"/>
+                            <constraint firstItem="ozG-N4-ba9" firstAttribute="top" secondItem="KXQ-Om-1we" secondAttribute="bottom" constant="75" id="dxP-s3-pCg"/>
                             <constraint firstItem="KXQ-Om-1we" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="uQj-sa-nrU"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="beaconLabel" destination="ozG-N4-ba9" id="Zz3-yV-ufq"/>
                         <outlet property="distanceReading" destination="KXQ-Om-1we" id="kOL-a9-Pd2"/>
+                        <outlet property="indicator" destination="yDu-8U-DO5" id="pMC-M5-ZTZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
