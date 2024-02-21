@@ -1422,7 +1422,6 @@ We can specify (what seems like) a global breakpoint when an exception is raised
 
 This is one of the debugging tools that allows us to see our current user interface compononets layered on top of each other in a 3D space so that we can better see what is and isn't there.
 
-
 ## `for case let` syntax
 
 A loop that can filter elements. Can be used to typecast elements in a loop like so:
@@ -1452,3 +1451,25 @@ Bill
 Ted
 ```
 
+## `@unknown default` vs `default`
+
+When dealing with an enum, using `default` in a switch case statement handles the case of value not matching any of our enum values. `@unknown` is used when we want to account for the case of adding new values to our enum in the future, as it will raise a warning if our switch statement isn't explicitly covering all our current enum values.
+
+```swift
+switch distance {
+case .unknown:
+    self.distanceReading.text = "UNKNOWN"
+
+case .far:
+    self.distanceReading.text = "FAR"
+
+case .near:
+    self.distanceReading.text = "NEAR"
+
+case .immediate:
+    self.distanceReading.text = "RIGHT HERE"
+
+@unknown default:
+    self.distanceReading.text = "WHOA!"
+}
+```
