@@ -31,6 +31,8 @@ class NoteViewController: UIViewController, UITextFieldDelegate {
         navigationItem.rightBarButtonItem = UIBarButtonItem(systemItem: .trash, primaryAction: UIAction { [weak self] _ in self?.handleDelete() })
 
         NotificationCenter.default.addObserver(self, selector: #selector(handleGoinToBackground), name: UIApplication.willResignActiveNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
     }
 
     func handleDelete() {
@@ -47,6 +49,24 @@ class NoteViewController: UIViewController, UITextFieldDelegate {
         present(ac, animated: true)
     }
 
+    @objc func adjustForKeyboard(notification: Notification) {
+        guard let keyboardValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return }
+        
+        let keyboardScreenEndFrame = keyboardValue.cgRectValue
+        let keyboardViewEndFreame = view.convert(keyboardScreenEndFrame, from: view.window)
+        
+        if notification.name == UIResponder.keyboardWillHideNotification {
+            contentField.contentInset = .zero
+        } else {
+            contentField.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardViewEndFreame.height - view.safeAreaInsets.bottom, right: 0)
+        }
+        
+        contentField.scrollIndicatorInsets = contentField.contentInset
+        
+        let selectedRange = contentField.selectedRange
+        contentField.scrollRangeToVisible(selectedRange)
+    }
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField == titleField {
             textField.resignFirstResponder()
