@@ -28,6 +28,8 @@ class GameScene: SKScene {
             gameScore.text = "Score: \(score)"
         }
     }
+    
+    var gameOver: SKLabelNode!
 
     var livesImages = [SKSpriteNode]()
     var lives = 3
@@ -60,6 +62,7 @@ class GameScene: SKScene {
         physicsWorld.gravity = CGVector(dx: 0, dy: -6)
         physicsWorld.speed = 0.85
 
+        createGameOver()
         createScore()
         createLives()
         createSlices()
@@ -172,6 +175,14 @@ class GameScene: SKScene {
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         activeSliceBG.run(SKAction.fadeOut(withDuration: 0.25))
         activeSliceFG.run(SKAction.fadeOut(withDuration: 0.25))
+    }
+    
+    func createGameOver() {
+        gameOver = SKLabelNode(fontNamed: "Chalkduster")
+        gameOver.position = CGPoint(x: width / 2, y: height / 2)
+        gameOver.fontSize = 60
+        gameOver.isHidden = true
+        addChild(gameOver)
     }
     
     func createScore() {
@@ -435,7 +446,8 @@ class GameScene: SKScene {
         if isGameEnded {
             return
         }
-
+        
+        gameOver.isHidden = false
         isGameEnded = true
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.2) {
             for enemy in self.activeEnemies {
