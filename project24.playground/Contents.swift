@@ -2,7 +2,7 @@ import UIKit
 
 let attribbutes: [NSAttributedString.Key: Any] = [
     .foregroundColor: UIColor.white,
-    .backgroundColor: UIColor.systemBlue,
+    .backgroundColor: UIColor.systemOrange,
     .font: UIFont.boldSystemFont(ofSize: 36),
 ]
 
