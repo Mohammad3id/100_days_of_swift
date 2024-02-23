@@ -179,8 +179,10 @@ class GameScene: SKScene {
     
     func createGameOver() {
         gameOver = SKLabelNode(fontNamed: "Chalkduster")
+        gameOver.verticalAlignmentMode = .center
         gameOver.position = CGPoint(x: width / 2, y: height / 2)
-        gameOver.fontSize = 60
+        gameOver.fontSize = 75
+        gameOver.text = "Game Over"
         gameOver.isHidden = true
         addChild(gameOver)
     }
