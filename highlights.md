@@ -1473,3 +1473,28 @@ case .immediate:
     self.distanceReading.text = "WHOA!"
 }
 ```
+
+## Extensions on generic types
+
+Consider the following case: we wanna make an extension that counts the number of odd and even numbers in an arbitrary collection. That said collection should contain only integer numbers for our extension to make sense. We can constraint our extension to only apply to collections whose generic `Element` type is a `BinaryInteger` like so:
+
+```swift
+extension Collection where Element: BinaryInteger {
+    func countOddEven() -> (odd: Int, even: Int) {
+        var even = 0
+        var odd = 0
+
+        for val in self {
+            if val.isMultiple(of: 2) {
+                even += 1
+            } else {
+                odd += 1
+            }
+        }
+        
+        return (odd, even)
+    }
+}
+```
+
+>Notice how `isMultiple(of:)` method is now available to call on our collection element. That's because we restricted this extension to only apply to collections whose elements are integers.
