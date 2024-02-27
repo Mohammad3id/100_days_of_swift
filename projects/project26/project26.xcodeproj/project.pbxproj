@@ -15,6 +15,13 @@
 		013560A12B8CE51600127BD0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0135609F2B8CE51600127BD0 /* Main.storyboard */; };
 		013560A32B8CE51700127BD0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 013560A22B8CE51700127BD0 /* Assets.xcassets */; };
 		013560A62B8CE51700127BD0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 013560A42B8CE51700127BD0 /* LaunchScreen.storyboard */; };
+		013560B42B8CE59B00127BD0 /* finish@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 013560AD2B8CE59B00127BD0 /* finish@2x.png */; };
+		013560B52B8CE59B00127BD0 /* level1.txt in Resources */ = {isa = PBXBuildFile; fileRef = 013560AE2B8CE59B00127BD0 /* level1.txt */; };
+		013560B62B8CE59B00127BD0 /* star@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 013560AF2B8CE59B00127BD0 /* star@2x.png */; };
+		013560B72B8CE59B00127BD0 /* player@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 013560B02B8CE59B00127BD0 /* player@2x.png */; };
+		013560B82B8CE59B00127BD0 /* block@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 013560B12B8CE59B00127BD0 /* block@2x.png */; };
+		013560B92B8CE59B00127BD0 /* vortex@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 013560B22B8CE59B00127BD0 /* vortex@2x.png */; };
+		013560BA2B8CE59B00127BD0 /* background@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 013560B32B8CE59B00127BD0 /* background@2x.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +34,13 @@
 		013560A02B8CE51600127BD0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		013560A22B8CE51700127BD0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		013560A52B8CE51700127BD0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		013560AD2B8CE59B00127BD0 /* finish@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "finish@2x.png"; sourceTree = "<group>"; };
+		013560AE2B8CE59B00127BD0 /* level1.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = level1.txt; sourceTree = "<group>"; };
+		013560AF2B8CE59B00127BD0 /* star@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "star@2x.png"; sourceTree = "<group>"; };
+		013560B02B8CE59B00127BD0 /* player@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "player@2x.png"; sourceTree = "<group>"; };
+		013560B12B8CE59B00127BD0 /* block@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "block@2x.png"; sourceTree = "<group>"; };
+		013560B22B8CE59B00127BD0 /* vortex@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "vortex@2x.png"; sourceTree = "<group>"; };
+		013560B32B8CE59B00127BD0 /* background@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "background@2x.jpg"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,8 +81,23 @@
 				0135609F2B8CE51600127BD0 /* Main.storyboard */,
 				013560A22B8CE51700127BD0 /* Assets.xcassets */,
 				013560A42B8CE51700127BD0 /* LaunchScreen.storyboard */,
+				013560AC2B8CE59B00127BD0 /* Content */,
 			);
 			path = project26;
+			sourceTree = "<group>";
+		};
+		013560AC2B8CE59B00127BD0 /* Content */ = {
+			isa = PBXGroup;
+			children = (
+				013560AD2B8CE59B00127BD0 /* finish@2x.png */,
+				013560AE2B8CE59B00127BD0 /* level1.txt */,
+				013560AF2B8CE59B00127BD0 /* star@2x.png */,
+				013560B02B8CE59B00127BD0 /* player@2x.png */,
+				013560B12B8CE59B00127BD0 /* block@2x.png */,
+				013560B22B8CE59B00127BD0 /* vortex@2x.png */,
+				013560B32B8CE59B00127BD0 /* background@2x.jpg */,
+			);
+			path = Content;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -129,10 +158,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				013560B92B8CE59B00127BD0 /* vortex@2x.png in Resources */,
 				013560A12B8CE51600127BD0 /* Main.storyboard in Resources */,
 				013560982B8CE51600127BD0 /* GameScene.sks in Resources */,
+				013560B62B8CE59B00127BD0 /* star@2x.png in Resources */,
+				013560B52B8CE59B00127BD0 /* level1.txt in Resources */,
 				013560A32B8CE51700127BD0 /* Assets.xcassets in Resources */,
+				013560B42B8CE59B00127BD0 /* finish@2x.png in Resources */,
+				013560B82B8CE59B00127BD0 /* block@2x.png in Resources */,
 				013560A62B8CE51700127BD0 /* LaunchScreen.storyboard in Resources */,
+				013560B72B8CE59B00127BD0 /* player@2x.png in Resources */,
+				013560BA2B8CE59B00127BD0 /* background@2x.jpg in Resources */,
 				0135609A2B8CE51600127BD0 /* Actions.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -304,8 +340,8 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UIStatusBarHidden = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationLandscapeRight;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -313,9 +349,13 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.example.project26;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
 		};
@@ -332,8 +372,8 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UIStatusBarHidden = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationLandscapeRight;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -341,9 +381,13 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.example.project26;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;
 		};
