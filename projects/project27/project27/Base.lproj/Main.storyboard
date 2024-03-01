@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="kRE-2z-dDG">
+    <device id="ipad10_9rounded" orientation="portrait" layout="fullscreen" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="Pnk-e4-ziF">
+            <objects>
+                <viewController id="kRE-2z-dDG" customClass="ViewController" customModule="project27" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="juT-Qi-bYP">
+                        <rect key="frame" x="0.0" y="0.0" width="820" height="1180"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ni4-BA-mjD">
+                                <rect key="frame" x="50" y="74" width="720" height="1036"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="trv-dK-hh6">
+                                <rect key="frame" x="369.5" y="1026" width="81.5" height="39"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Redraw"/>
+                                <connections>
+                                    <action selector="redrawTapped:" destination="kRE-2z-dDG" eventType="touchUpInside" id="zmG-FW-WiQ"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="kye-pv-d9Y"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="trv-dK-hh6" firstAttribute="centerX" secondItem="kye-pv-d9Y" secondAttribute="centerX" id="0Qg-yp-cxM"/>
+                            <constraint firstItem="kye-pv-d9Y" firstAttribute="bottom" secondItem="Ni4-BA-mjD" secondAttribute="bottom" constant="50" id="51w-Ll-F8o"/>
+                            <constraint firstItem="kye-pv-d9Y" firstAttribute="bottom" secondItem="trv-dK-hh6" secondAttribute="bottom" constant="95" id="Bzh-TT-N9J"/>
+                            <constraint firstItem="Ni4-BA-mjD" firstAttribute="top" secondItem="kye-pv-d9Y" secondAttribute="top" constant="50" id="DOr-hl-hvz"/>
+                            <constraint firstItem="kye-pv-d9Y" firstAttribute="trailing" secondItem="Ni4-BA-mjD" secondAttribute="trailing" constant="50" id="u6s-un-8uv"/>
+                            <constraint firstItem="Ni4-BA-mjD" firstAttribute="leading" secondItem="kye-pv-d9Y" secondAttribute="leading" constant="50" id="v62-r2-U1D"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="imageView" destination="Ni4-BA-mjD" id="SMm-A4-yf2"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2ad-Cf-eMJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="124.39024390243902" y="-95.084745762711876"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
