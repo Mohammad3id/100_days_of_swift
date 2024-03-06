@@ -24,13 +24,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
     var currentPlayer = 1
 
+    var wind = 0
+    
     override func didMove(to view: SKView) {
+        super.didMove(to: view)
         backgroundColor = UIColor(hue: 0.669, saturation: 0.8, brightness: 0.5, alpha: 1)
-        
+
         physicsWorld.contactDelegate = self
         
         createBuildings()
         createPlayers()
+        setRandomWind()
     }
 
     func createBuildings() {
@@ -94,7 +98,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         addChild(banana)
 
         if currentPlayer == 1 {
-            banana.position = CGPoint(x: player1.position.x - 30, y: player1.position.y + 40)
+            banana.position = CGPoint(x: player1.position.x - 40, y: player1.position.y + 50)
             banana.physicsBody?.angularVelocity = -20
 
             let raiseArm = SKAction.setTexture(SKTexture(imageNamed: "player1Throw"))
@@ -106,7 +110,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             let impulse = CGVector(dx: cos(radians) * speed, dy: sin(radians) * speed)
             banana.physicsBody?.applyImpulse(impulse)
         } else {
-            banana.position = CGPoint(x: player2.position.x + 30, y: player2.position.y + 40)
+            banana.position = CGPoint(x: player2.position.x + 40, y: player2.position.y + 50)
             banana.physicsBody?.angularVelocity = 20
 
             let raiseArm = SKAction.setTexture(SKTexture(imageNamed: "player2Throw"))
@@ -123,7 +127,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func deg2rad(degrees: Int) -> Double {
         Double(degrees) * Double.pi / 180
     }
-    
+
     func didBegin(_ contact: SKPhysicsContact) {
         let firstBody: SKPhysicsBody
         let secondBody: SKPhysicsBody
@@ -151,7 +155,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             destroy(player: player2)
         }
     }
-    
+
     func destroy(player: SKSpriteNode) {
         if let explosion = SKEmitterNode(fileNamed: "hitPlayer") {
             explosion.position = player.position
@@ -161,10 +165,26 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         player.removeFromParent()
         banana.removeFromParent()
 
+        DispatchQueue.main.async {
+            if player == self.player1 {
+                self.viewController.addPoint(to: 2)
+            } else {
+                self.viewController.addPoint(to: 1)
+            }
+
+            if self.viewController.player1Score == 3 || self.viewController.player2Score == 3 {
+                self.viewController.endGame()
+            }
+        }
+
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             let newGame = GameScene(size: self.size)
             newGame.viewController = self.viewController
             self.viewController.currentGame = newGame
+
+            if self.viewController.player1Score == 3 || self.viewController.player2Score == 3 {
+                self.viewController.resetGame(with: self.currentPlayer)
+            }
 
             self.changePlayer()
             newGame.currentPlayer = self.currentPlayer
@@ -173,7 +193,21 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             self.view?.presentScene(newGame, transition: transition)
         }
     }
-    
+
+    func setRandomWind() {
+        wind = (-3 ... 3).randomElement()!
+
+        if wind == 0 {
+            viewController.windLabel.text = ""
+        } else if wind > 0 {
+            viewController.windLabel.text = "WIND " + String(repeating: ">", count: wind)
+        } else {
+            viewController.windLabel.text = String(repeating: "<", count: abs(wind)) + " WIND"
+        }
+        
+        physicsWorld.gravity.dx = Double(wind * 2)
+    }
+
     func changePlayer() {
         if currentPlayer == 1 {
             currentPlayer = 2
@@ -183,7 +217,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
         viewController.activatePlayer(number: currentPlayer)
     }
-    
+
     func bananaHit(building: SKNode, atPoint contactPoint: CGPoint) {
         guard let building = building as? BuildingNode else { return }
         let buildingLocation = convert(contactPoint, to: building)
@@ -200,7 +234,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
         changePlayer()
     }
-    
+
     override func update(_ currentTime: TimeInterval) {
         guard banana != nil else { return }
 

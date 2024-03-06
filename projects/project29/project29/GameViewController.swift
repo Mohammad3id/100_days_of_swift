@@ -22,6 +22,23 @@ class GameViewController: UIViewController {
     @IBOutlet var launchButton: UIButton!
     @IBOutlet var playerNumber: UILabel!
     
+    @IBOutlet var player1ScoreLabel: UILabel!
+    @IBOutlet var player2ScoreLabel: UILabel!
+    
+    @IBOutlet var windLabel: UILabel!
+    
+    var player1Score = 0 {
+        didSet {
+            player1ScoreLabel.text = "PLAYER ONE: \(player1Score)"
+        }
+    }
+    var player2Score = 0 {
+        didSet {
+            player2ScoreLabel.text = "PLAYER TWO: \(player2Score)"
+        }
+    }
+    @IBOutlet var endLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -34,11 +51,11 @@ class GameViewController: UIViewController {
                 // Set the scale mode to scale to fit the window
                 scene.scaleMode = .aspectFill
                 
-                // Present the scene
-                view.presentScene(scene)
-                
                 currentGame = scene as? GameScene
                 currentGame.viewController = self
+                resetGame(with: 1)
+
+                view.presentScene(scene)                
             }
             
             view.ignoresSiblingOrder = true
@@ -68,6 +85,12 @@ class GameViewController: UIViewController {
         velocityLabel.text = "Velocity: \(Int(velocitySlider.value))"
     }
     
+    func resetGame(with player: Int) {
+        endLabel.isHidden = true
+        player1Score = 0
+        player2Score = 0
+    }
+    
     @IBAction func launch(_ sender: UIButton) {
         angleSlider.isHidden = true
         angleLabel.isHidden = true
@@ -94,5 +117,29 @@ class GameViewController: UIViewController {
         velocityLabel.isHidden = false
 
         launchButton.isHidden = false
+    }
+    
+    func addPoint(to player: Int) {
+        if (player == 1) {
+            player1Score += 1
+        } else {
+            player2Score += 1
+        }
+        
+        if (player1Score == 3 || player2Score == 3) {
+            endGame()
+        }
+    }
+    
+    func endGame() {
+        endLabel.text = ""
+        
+        if (player1Score == 3) {
+            endLabel.text = "PLAYER ONE WINS"
+        } else if (player2Score == 3) {
+            endLabel.text = "PLAYER TWO WINS"
+        }
+        
+        endLabel.isHidden = false
     }
 }
