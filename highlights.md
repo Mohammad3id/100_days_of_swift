@@ -6,8 +6,6 @@ These are features/facts/tips/tricks in iOS Dev that I came across during the 10
 
 ## Multiline String
 
-> There is a bug in Swift multiline string literals syntax highlighting on github so don't wory if the string is highlighted with a red color, it's valid Swift code.
-
 ```swift
 var str = """
 Hello \
@@ -154,7 +152,7 @@ true
 
 ## Comparable Enums
 
-Enums can conform Comparable protocol to be able to used in comparisons. Results are based on the order of appearance of enum members.
+Enums can conform Comparable protocol to be able to be used in comparisons. Results are based on the order of appearance of enum members.
 
 ```swift
 enum Sizes: Comparable {
@@ -474,7 +472,7 @@ Check our this [article](https://www.donnywals.com/working-with-throwing-functio
 
 ## Calling throwing function
 
-Functions marked as `throws` can call the throwing functions without `try` only and without any further handling to let the error propagate to its caller. Non-throwing functions on the other hand, should do one of the following:
+Functions marked as `throws` can call the throwing functions without `try` and without any further handling to let the error propagate to its caller. Non-throwing functions on the other hand, should do one of the following:
 
 - Use a `do-catch` block to handle the error
 - Use `try?` when calling throwing functions which makes them return `nil` in case of errors
@@ -541,7 +539,7 @@ Output:
 ```
 
 \
-But we can be more precise and use shorthand parameters. They are the default names for parameters and we don’t need to specify any parameter names when using them.
+But we can be more concise and use shorthand parameters. They are the default names for parameters and we don’t need to specify any parameter names when using them.
 
 ```swift
 run {
@@ -836,9 +834,9 @@ print(myInstance.lazyValue)
 
 ## `static` methods & properties with structs vs enums
 
-Static methods and properties are available without creating needing an instance. They're useful for grouping related and frequently used values and functionalities without polluting the namespace.
+Static methods and properties are available without creating an instance. They're useful for grouping related and frequently used values and functionalities without polluting the namespace.
 
-We can use a struct to group static members as well as enums. Difference being that enums without any cases can't have instances and hence would totally prevent us from creating an pointless instance.
+We can use a struct to group static members as well as enums. Difference being that enums without any cases can't have instances and hence would totally prevent us from creating a pointless instance.
 
 ```swift
 enum Randomizer {
@@ -1023,7 +1021,7 @@ My name is Taylor ID is 12345
 
 Check out this [article](https://www.swiftbysundell.com/articles/conditional-conformances-in-swift/) to learn about "Conditional Conformance".
 
-## Optinals unwrapping with `if let` syntax
+## Optionals unwrapping with `if let` syntax
 
 Swift null safety prevent us from accessing optional (possible `nil`) values directly to prevent errors. We need to unwrap optional values first, and one of the ways it's done by is `if let` syntax. Consider the following variable of type 'optional string':
 
@@ -1232,7 +1230,7 @@ Swift uses a technique called "copy on write" when making copies of struct insta
 
 ## Working with Objective-C code
 
-Apple operating systems are mostly built with Objective-C, so to make some of our Swift code available to use by the OS we need to use the `@objc` mark with our code.
+Objective-C was the main iOS dev language in the past, and it seems like some older APIs still use it, so to make some of our Swift code available to use by the OS we need to use the `@objc` mark with our code.
 
 ## Properties with getter only
 
@@ -1290,7 +1288,7 @@ This view controller can be used to implement sharing functionality in iOS apps.
 
 ## `@IBAction` implies `@objc`
 
-Apparently the `@IBAction` automatically implies `@objc` as well since the method marked with `@IBAction` is supposed to be called by the system which is written in Objective-C
+Apparently the `@IBAction` automatically implies `@objc` as well.
 
 ## Inheritence before conformance
 
@@ -1376,7 +1374,7 @@ Creating a house and an owner
 Done
 ```
 
-Notice how the deinitializers didn't run cause each instance strongly captures the other in its closure. To solce this, we can use a `weak` capture:
+Notice how the deinitializers didn't run cause each instance strongly captures the other in its closure. To solve this, we can use a `weak` capture:
 
 ```swift
 print("Creating a house and an owner")
@@ -1406,7 +1404,7 @@ For some reason.
 
 ## `UIStoryboard`
 
-Apparently you can have multiple storyboards in one app and can use load them by making an instance of `UIStoryboard` and providing the storyboard name and the bundle that contains it.
+Apparently you can have multiple storyboards in one app and can load them by making an instance of `UIStoryboard` and providing the storyboard name and the bundle that contains it.
 
 > Passing `nil` as the bundle means "use the current app main bundle".
 
@@ -1446,7 +1444,7 @@ for case let name? in names {
 
 Output:
 
-```swift
+```
 Bill
 Ted
 ```
@@ -1491,10 +1489,71 @@ extension Collection where Element: BinaryInteger {
                 odd += 1
             }
         }
-        
+
         return (odd, even)
     }
 }
 ```
 
->Notice how `isMultiple(of:)` method is now available to call on our collection element. That's because we restricted this extension to only apply to collections whose elements are integers.
+> Notice how `isMultiple(of:)` method is now available to call on our collection element. That's because we restricted this extension to only apply to collections whose elements are integers.
+
+## Opaque return types
+
+Sometimes the return type is quite long with a bunch of nested generic parameters, and the called doesn't really need to know all these details. We can try returning a protocol, but in some cases this won't be possible if some protocol APIs depends on the concrete type, like Equatable for example. In Equatable, the `==` operator is defined to have two operands of the type implementing the protocol (e.g Int, Double, etc), meaning that we can't use `==` between an Int and a Boolean, although they both are equatable.
+
+So in this case, we can't hide the info of what type is returned and just say it's an Equatable, cause we can't compare any two Equatables. However we can say that the function will return `some Equatable` value of fixed type, e.g it will always return an Int, or it will always return a Double, etc. This way, we can compare the Equatable results returned from the function knowing that they will always be the same Equatable type, although we don't actually know what that type is. This means that the function should always return the same Equatable type, so this function will not compile:
+
+```swift
+var returnInt = true
+
+func getRandomNumber() -> some Equatable {
+    if (returnInt) {
+        Int.random(in: 1...6)               // Error: Branches have mismatching types 'Int' and 'Double'
+    } else {
+        Double.random(in: 1...6)
+    }
+    
+}
+```
+
+This behavior allows us to hide the type info from code but not from the compiler. It's used everywher in SwiftUI as views return `some View`. See this [article](https://www.hackingwithswift.com/quick-start/beginners/how-to-use-opaque-return-types) to know more about it.
+
+## `while let`
+
+Similar to how `if let` works, you can use `while let` to keep unwrapping an optional.
+
+```swift
+while let value = try? getNextValue() {
+    print(value)
+}
+```
+
+The loop will continue executing until `getNextValue` throws.
+
+## `defer` keyword
+
+`defer` is used to let some code run before existing a scope:
+
+```swift
+print("Step 1")
+
+do {
+    defer { print("Step 2") }
+    print("Step 3")
+    print("Step 4")
+}
+
+print("Step 5")
+```
+
+Output:
+
+```
+Step 1
+Step 3
+Step 4
+Step 2
+Step 5
+```
+
+You can read this [article](https://www.hackingwithswift.com/new-syntax-swift-2-defer) to know more about it.
